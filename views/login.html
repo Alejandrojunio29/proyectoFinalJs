@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
+    <link rel="stylesheet" href="styles/styles.sass">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,7 +19,7 @@
 
   <body>
     <div class="container">
-      <div class="d-block p-2 border border-danger text-center">
+      <div class="d-block p-2  text-center">
         <a class="d-flex justify-content-center gap-5 m-3" href="index.html">
           <img
             class="text-center"
@@ -37,7 +38,7 @@
         </div>
 
         <div class="d-grid gap-2">
-          <button type="button" class="btn border p-2">
+          <button type="button" class="btn btn-hover border p-2">
             <i class="fa-brands fa-apple mx-5"></i>
             Continue with Apple
           </button>
@@ -54,12 +55,21 @@
             Continue with Twitter
           </button>
         </div>
-        <div class="container">
-          <hr class="0" />
-          <h1 class="m-3">OR</h1>
-        </div>
+       
+        <div class="container mt-5">
+            <div class="position-relative">
+              <div class="">
+                <hr>
+              </div>
+              <div class="position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <div class="bg-white p-3">
+                  OR
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="container">
+        <div class="container pt-3">
           <p class="d-flex fs-6 m-0">Email</p>
           <input
             class="d-flex w-100 border border-dark-subtle rounded-1 p-1"
@@ -109,19 +119,32 @@
       </div>
     </div>
 
+
+    
+    
+
+
     <footer class="bg-secondary text-white mt-5 p-5">
-      <div class="border bg-success p-2">
-        <div class="d-flex justify-content-center align-items-center">
-          <a href="">DEV Community</a>
-          <p>—</p>
-          <p>
-            A constructive and inclusive social network for software developers.
-            With you every step of your journey.
+      <!-- <div class="border bg-warning p-2"> -->
+        <!-- <div class="text-center"> -->
+          <p class="text-center">
+            <a href="">Dev Community</a> — A constructive and inclusive social
+            network for software developers. With you every step of your
+            journey.
           </p>
         </div>
-        <div class="d-flex align-items-center">
-          <a href="">Home</a>
-          <p>*</p>
+        <!-- <div class="text-center text-secondary"> -->
+          <p class="text-center "><a href="">Home</a> • <a href="">Podcasts</a> • <a href="">Videos</a> • <a href="">Tags</a> • <a href="">FAQ</a> • <a href="">Advertise on DEV</a> • <a href="">About</a> • <a href="">Contact</a> • <a href="">Guides</a> • <a href="">Software comparisons</a></p>
+        </div>
+        <!-- <div class="text-center text-secondary"> -->
+            <p class="text-center text-secondary"><a href="">Code of Conduct</a> • <a href="">Privacy Policy</a> • <a href="">Terms of use</a> </p>
+          </div>
+          <div class="text-center">
+          
+            <p> Built on <a href="">Forem</a> — the <a href=""> open source </a> software that powers <a href=""> DEV </a>and other inclusive communities.
+
+                Made with love and <a href=""> Ruby on Rails</a>. DEV Community © 2016 - 2023.
+          </p>
         </div>
       </div>
     </footer>
