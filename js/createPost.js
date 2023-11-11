@@ -8,7 +8,6 @@ const createPost = () => {
   let hashtag1 = document.getElementById("FormControlHashtags").value;
   let userName = document.getElementById("post-author-input").value;
   let userImg = document.getElementById("post-author-picture").value;
-
   let date = new Date().toLocaleDateString();
 
   let postObject = {
@@ -36,6 +35,7 @@ const createPostinDB = async (postObject) => {
   return data;
 };
 
+
 const savePost = async () => {
   let postObject = createPost();
   console.log(postObject);
@@ -46,3 +46,9 @@ const savePost = async () => {
 let savePostBtn = document.getElementById("publish-btn");
 
 savePostBtn.addEventListener("click", savePost);
+
+
+
+
+
+
