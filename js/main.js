@@ -1,36 +1,46 @@
-let postArray = [
-  {
-    date: "Nov 7",
-    isRelevant: true,
-    tags: {
-      tag1: "kodemia",
-      tag2: "programming",
-      tag3: "computers",
-      tag4: "javascript",
-    },
-    timeToRead: "10 min",
-    title: "Testing post",
-    userName: "El Pepe",
+// let postArray = [
+//   {
+//     date: "Nov 7",
+//     isRelevant: true,
+//     tags: {
+//       tag1: "kodemia",
+//       tag2: "programming",
+//       tag3: "computers",
+//       tag4: "javascript",
+//     },
+//     timeToRead: "10 min",
+//     title: "Testing post",
+//     userName: "El Pepe",
 
-    postImg:
-      "https://res.cloudinary.com/practicaldev/image/fetch/s--wP48g-um--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zfzl1bmezdynbmhj5smy.png",
-    userImg: "https://xsgames.co/randomusers/assets/avatars/male/74.jpg",
-  },
-];
+//     postImg:
+//       "https://res.cloudinary.com/practicaldev/image/fetch/s--wP48g-um--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zfzl1bmezdynbmhj5smy.png",
+//     userImg: "https://xsgames.co/randomusers/assets/avatars/male/74.jpg",
+//   },
+// ];
 
 const getAllPosts = async () => {
+  let postWrapper = document.getElementById("main-side");
+  postWrapper.innerHTML="";
   let response = await fetch(
     "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
   );
-  let data = await response.json();
-  console.log(data);
-  return data;
+  let dataPosts = await response.json();
+  console.log("este es la ", dataPosts);
+  if (dataPosts){
+    let postsArray =Object.entries(dataPosts);
+    console.log("este es el", postsArray);
+    let combinedPosts= postsArray.reduce((accum, current) =>{
+      return [...accum, {key:current[0], ...current[1]}];
+    }, []);
+allPosts= combinedPosts;
+printAllCards(allPosts );
+  } //agregar un else que notifique que hacer en caso de no haber posts
 };
 
 getAllPosts();
 
-const createPostCard = (array) => {
-  let { postImg, date, tags, timeToRead, title, userName, userImg } = array;
+const createPostCard = (post) => {
+  let { postImg, date, hashtag1, hashtag2, hashtag3, hashtag4, timeToRead, title, userName, userImg } = post;
 
   let mainContainer = document.createElement("div");
   mainContainer.classList.add("card", "mb-3");
@@ -89,7 +99,7 @@ const createPostCard = (array) => {
   );
   tag1.setAttribute("role", "button");
   tag1.href = "#";
-  tag1.innerText = tags.tag1;
+  tag1.innerText = hashtag1;
 
   let tag2 = document.createElement("a");
   tag2.classList.add(
@@ -101,7 +111,7 @@ const createPostCard = (array) => {
   );
   tag2.setAttribute("role", "button");
   tag2.href = "#";
-  tag2.innerText = tags.tag2;
+  tag2.innerText = hashtag2;
 
   let tag3 = document.createElement("a");
   tag3.classList.add(
@@ -113,7 +123,7 @@ const createPostCard = (array) => {
   );
   tag3.setAttribute("role", "button");
   tag3.href = "#";
-  tag3.innerText = tags.tag3;
+  tag3.innerText = hashtag3;
 
   let tag4 = document.createElement("a");
   tag4.classList.add(
@@ -125,7 +135,7 @@ const createPostCard = (array) => {
   );
   tag4.setAttribute("role", "button");
   tag4.href = "#";
-  tag4.innerText = tags.tag4;
+  tag4.innerText = hashtag4;
 
   let seventhContainer = document.createElement("div");
   seventhContainer.classList.add("d-flex", "justify-content-between", "mt-3");
@@ -184,18 +194,16 @@ const createPostCard = (array) => {
   return mainContainer;
 };
 
-const printPostCard = (postData) => {
-  let postWrapper = document.getElementById("main-side");
-  let postCard = createPostCard(postData);
-  postWrapper.append(postCard);
-};
+
 
 const printAllCards = (postsArray) => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
   postsArray.forEach((post) => {
-    printPostCard(post);
+    let postCard =createPostCard(post) 
+    postWrapper.append(postCard);
   });
 };
 
-printAllCards(postArray);
+
+
