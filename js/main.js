@@ -29,16 +29,15 @@ const getAllPosts = async () => {
 
 getAllPosts();
 
-const createPostCard = (postData) => {
-  let { postimg, date, tags, timetoRead, title, username, userImg } = postData;
+const createPostCard = (array) => {
+  let { postImg, date, tags, timeToRead, title, userName, userImg } = array;
 
   let mainContainer = document.createElement("div");
   mainContainer.classList.add("card", "mb-3");
 
-  let postImg = document.createElement("img");
-  postImg.classList.add("card-img-top");
-  postImg.src =
-    "https://res.cloudinary.com/practicaldev/image/fetch/s--wP48g-um--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zfzl1bmezdynbmhj5smy.png";
+  let postimg = document.createElement("img");
+  postimg.classList.add("card-img-top");
+  postimg.src = postImg;
 
   let secondContainer = document.createElement("div");
   secondContainer.classList.add("card-body");
@@ -50,22 +49,21 @@ const createPostCard = (postData) => {
   userProfileImg.classList.add("rounded-circle", "shadow-4-strong");
   userProfileImg.style.height = "40px";
   userProfileImg.alt = "foto de perfil del usuario";
-  userProfileImg.src =
-    "https://xsgames.co/randomusers/assets/avatars/male/74.jpg";
+  userProfileImg.src = userImg;
 
   let fourthContainer = document.createElement("div");
   fourthContainer.classList.add("ps-1");
 
-  let userName = document.createElement("h5");
-  userName.classList.add("card-title", "m-0");
-  userName.innerText = "Nombre del usuario";
+  let username = document.createElement("h5");
+  username.classList.add("card-title", "m-0");
+  username.innerText = userName;
 
   let postDate = document.createElement("p");
   postDate.classList.add("card-text");
 
   let dateSmall = document.createElement("small");
   dateSmall.classList.add("text-body-secondary");
-  dateSmall.innerText = "Nov 7";
+  dateSmall.innerText = date;
 
   postDate.append(dateSmall);
 
@@ -76,7 +74,7 @@ const createPostCard = (postData) => {
 
   let postTitle = document.createElement("p");
   postTitle.classList.add("card-text", "fs-4", "fw-bolder", "lh-sm", "my-2");
-  postTitle.innerText = "Titulo del Post";
+  postTitle.innerText = title;
 
   let tagsContainer = document.createElement("div");
   tagsContainer.classList.add("d-flex", "flex-wrap", "gap-2");
@@ -91,7 +89,7 @@ const createPostCard = (postData) => {
   );
   tag1.setAttribute("role", "button");
   tag1.href = "#";
-  tag1.innerText = "webdev";
+  tag1.innerText = tags.tag1;
 
   let tag2 = document.createElement("a");
   tag2.classList.add(
@@ -103,7 +101,7 @@ const createPostCard = (postData) => {
   );
   tag2.setAttribute("role", "button");
   tag2.href = "#";
-  tag2.innerText = "programming";
+  tag2.innerText = tags.tag2;
 
   let tag3 = document.createElement("a");
   tag3.classList.add(
@@ -115,7 +113,7 @@ const createPostCard = (postData) => {
   );
   tag3.setAttribute("role", "button");
   tag3.href = "#";
-  tag3.innerText = "productivity";
+  tag3.innerText = tags.tag3;
 
   let tag4 = document.createElement("a");
   tag4.classList.add(
@@ -127,7 +125,7 @@ const createPostCard = (postData) => {
   );
   tag4.setAttribute("role", "button");
   tag4.href = "#";
-  tag4.innerText = "beginners";
+  tag4.innerText = tags.tag4;
 
   let seventhContainer = document.createElement("div");
   seventhContainer.classList.add("d-flex", "justify-content-between", "mt-3");
@@ -156,16 +154,16 @@ const createPostCard = (postData) => {
 
   postComments.append(commentsText);
 
-  let timeToRead = document.createElement("p");
-  timeToRead.classList.add("card-text", "d-flex");
+  let timetoread = document.createElement("p");
+  timetoread.classList.add("card-text", "d-flex");
 
-  let timeToReadText = document.createElement("small");
-  timeToReadText.classList.add("text-body-secondary");
-  timeToReadText.innerText = "3 mins Read ⌛️";
+  let timetoReadText = document.createElement("small");
+  timetoReadText.classList.add("text-body-secondary");
+  timetoReadText.innerText = timeToRead;
 
-  timeToRead.append(timeToReadText);
+  timetoread.append(timetoReadText);
 
-  seventhContainer.append(postReactions, postComments, timeToRead);
+  seventhContainer.append(postReactions, postComments, timetoread);
 
   tagsContainer.append(tag1, tag2, tag3, tag4);
 
@@ -175,21 +173,29 @@ const createPostCard = (postData) => {
 
   //Parte de abajo
 
-  fourthContainer.append(userName, postDate);
+  fourthContainer.append(username, postDate);
 
   thirdContainer.append(userProfileImg, fourthContainer);
 
   secondContainer.append(thirdContainer, fifthContainer);
 
-  mainContainer.append(postImg, secondContainer);
+  mainContainer.append(postimg, secondContainer);
 
   return mainContainer;
 };
 
-const printPostCards = (postArray) => {
+const printPostCard = (postData) => {
   let postWrapper = document.getElementById("main-side");
-  let postCard = createPostCard(postArray);
+  let postCard = createPostCard(postData);
   postWrapper.append(postCard);
 };
 
-printPostCards(postArray);
+const printAllCards = (postsArray) => {
+  let postWrapper = document.getElementById("main-side");
+  postWrapper.innerHTML = "";
+  postsArray.forEach((post) => {
+    printPostCard(post);
+  });
+};
+
+printAllCards(postArray);
