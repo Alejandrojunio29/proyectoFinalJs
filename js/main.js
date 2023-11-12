@@ -1,23 +1,3 @@
-// let postArray = [
-//   {
-//     date: "Nov 7",
-//     isRelevant: true,
-//     tags: {
-//       tag1: "kodemia",
-//       tag2: "programming",
-//       tag3: "computers",
-//       tag4: "javascript",
-//     },
-//     timeToRead: "10 min",
-//     title: "Testing post",
-//     userName: "El Pepe",
-
-//     postImg:
-//       "https://res.cloudinary.com/practicaldev/image/fetch/s--wP48g-um--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zfzl1bmezdynbmhj5smy.png",
-//     userImg: "https://xsgames.co/randomusers/assets/avatars/male/74.jpg",
-//   },
-// ];
-
 const getAllPosts = async () => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML="";
@@ -214,28 +194,14 @@ const printAllCards = (postsArray) => {
 
 
 
-// let filterByRelevant = document.getElementById("relevant-button");
 
-// filterByRelevant.addEventListener("click", (event)=>{
-//   console.log(allPosts)
-//  let filterRelevantResult = getAllPosts.filter((post)=>{
-//   post.isRelevant =true ? alert("si hay post con true") : alert("post sin true")
-//  })
-//  console.log(filterRelevantResult);
-// })
-// const cleanList = () => {
-//   let cardMainList = document.querySelector("main-side");
-//   while (cardMainList.firstChild) {
-//     cardMainList.removeChild(cardMainList.lastChild);
-//   }
-// };
-const respuesta = async ()=> {
-  let officialResponse= await fetch(
-    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json")
-    let realOfficialResponse  =  await officialResponse.json()
-    return realOfficialResponse
+const getPosts = async () => {
+  let response = await fetch("https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json");
+  let data = await response.json();
+  return data;
+};
 
-}
+
 
 //Esta funcion NO LE MUEVAS PERRO, ES LA QUE ACOMODA LOS POSTS POR FECHA
 const filterLatest = async () => {
@@ -256,10 +222,10 @@ console.log("posts", dataPosts)
 const latestButton = document.getElementById("latest-button");
 latestButton.addEventListener("click", async (event) => {
   let top = document.getElementById("top-button");
-  //let latest = document.getElementById("latest-botton");
+  let latest = document.getElementById("latest-button");
   let relevant = document.getElementById("relevant-button");
   top.classList.remove("fw-bold");
-  //latest.classList.add("fw-bold");
+  latest.classList.add("fw-bold");
   relevant.classList.remove("fw-bold");
   let latestObjects = await filterLatest();
   //cleanList();
@@ -270,7 +236,28 @@ latestButton.addEventListener("click", async (event) => {
         let mainContainer = document.getElementById("main-side");
         let card = printAllCards(latestObjects);
         mainContainer.append(card);
-        
       }
-    
   );});
+
+    const topButton = document.getElementById("top-button");
+topButton.addEventListener("click", async (event) => {
+  let top = document.getElementById("top-button");
+  let latest = document.getElementById("latest-button");
+  let relevant = document.getElementById("relevant-button");
+  top.classList.add("fw-bold");
+  latest.classList.remove("fw-bold");
+  relevant.classList.remove("fw-bold");
+  let posts = await getPosts();
+  for (key in posts) {
+    if (posts[key].isRelevant) {
+      let { postImg, postContent, date, timeToRead, hashtag1, userName, userImg } = posts[key];
+          let postComplete = {postImg, postContent, date, timeToRead, hashtag1, userName, userImg};
+          console.log(postComplete);
+          let mainContainer = document.querySelector("main-side");
+          let card = printAllCards(postComplete, key);
+          mainContainer.appendChild(card);
+          };
+        }
+      }
+);
+
