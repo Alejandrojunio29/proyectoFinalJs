@@ -194,8 +194,6 @@ const createPostCard = (post) => {
   return mainContainer;
 };
 
-
-
 const printAllCards = (postsArray) => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
@@ -205,5 +203,74 @@ const printAllCards = (postsArray) => {
   });
 };
 
+// const objectToArray = (postsArray) => {
+//   let postWrapper = document.getElementById("main-side");
+//   postWrapper.innerHTML = "";
+//   postsArray.forEach((post) => {
+//     let postCard =createPostCard(post) 
+//     postWrapper.append(postCard);
+//   });
+// };
 
 
+
+// let filterByRelevant = document.getElementById("relevant-button");
+
+// filterByRelevant.addEventListener("click", (event)=>{
+//   console.log(allPosts)
+//  let filterRelevantResult = getAllPosts.filter((post)=>{
+//   post.isRelevant =true ? alert("si hay post con true") : alert("post sin true")
+//  })
+//  console.log(filterRelevantResult);
+// })
+// const cleanList = () => {
+//   let cardMainList = document.querySelector("main-side");
+//   while (cardMainList.firstChild) {
+//     cardMainList.removeChild(cardMainList.lastChild);
+//   }
+// };
+const respuesta = async ()=> {
+  let officialResponse= await fetch(
+    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json")
+    let realOfficialResponse  =  await officialResponse.json()
+    return realOfficialResponse
+
+}
+
+//Esta funcion NO LE MUEVAS PERRO, ES LA QUE ACOMODA LOS POSTS POR FECHA
+const filterLatest = async () => {
+  let response = await fetch(
+    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
+  );
+  let dataPosts = await response.json();
+  let result = [];
+console.log("posts", dataPosts)
+  for (key in dataPosts) {
+    let { postImg, postContent, date, timeToRead, hashtag1, userName, userImg } = dataPosts[key];
+    result.push({  postImg, postContent, date, timeToRead, hashtag1, userName, userImg, key });
+  }
+  return result.sort((a, b) => (a.date < b.date ? 1 : -1));
+};
+
+
+const latestButton = document.getElementById("latest-button");
+latestButton.addEventListener("click", async (event) => {
+  let top = document.getElementById("top-button");
+  //let latest = document.getElementById("latest-botton");
+  let relevant = document.getElementById("relevant-button");
+  top.classList.remove("fw-bold");
+  //latest.classList.add("fw-bold");
+  relevant.classList.remove("fw-bold");
+  let latestObjects = await filterLatest();
+  //cleanList();
+  console.log("esta es la lista latest", latestObjects);
+  latestObjects.forEach(async (object) => {
+    let post =  [{postImg, postContent, date, timeToRead, hashtag1, userName, userImg} =object]; 
+        console.log("este es post22222",post);
+        let mainContainer = document.getElementById("main-side");
+        let card = printAllCards(latestObjects);
+        mainContainer.append(card);
+        
+      }
+    
+  );});
