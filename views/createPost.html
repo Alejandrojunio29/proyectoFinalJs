@@ -15,7 +15,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="bg-light">
     <nav class="bg-body-tertiary">
       <div class="d-flex justify-content-between">
         <div class="d-flex mt-2">
@@ -28,15 +28,19 @@
               height="30px"
             />
           </a>
-          <p>Create a post</p>
+          <p class="fs-6">Create a post</p>
         </div>
 
-        <div class="d-flex mt-2">
-          <p class="mx-3">Edit</p>
-          <p>Preview</p>
+        <div class="d-flex mt-2 justify-content-evenly">
+          <button type="button" class="btn btn-outline-secondary btn-sm mx-3">
+            Edit
+          </button>
+          <button type="button" class="btn btn-outline-secondary btn-sm">
+            Preview
+          </button>
         </div>
         <div class="mx-3 mt-2">
-          <p>ICONO X</p>
+          <a href=""><i class="fa-solid fa-x"></i></a>
         </div>
       </div>
     </nav>
@@ -59,130 +63,149 @@
                         </h5>
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body">
-                        <input
-                          type="text"
-                          class="form-control border border-secondary-subtle d-inline shadow-none"
-                          placeholder="Insert the link of your header img here..."
-                          id="post-image-input"
-                        />
 
-                        <input
-                          type="text"
-                          class="form-control border border-secondary-subtle d-inline shadow-none"
-                          placeholder="Insert the post author name"
-                          id="post-author-input"
-                        />
-
-                        <input
-                          type="text"
-                          class="form-control border border-secondary-subtle d-inline shadow-none"
-                          placeholder="Insert the post author profile picture"
-                          id="post-author-picture"
-                        />
-
-                        <textarea
-                          class="form-control border border-0 shadow-none text-break"
-                          id="FormControlTextarea1"
-                          placeholder="New post title here..."
-                        ></textarea>
-                        <ul class="hashtags-add p-0">
-                          <input
-                            type="text"
-                            class="hashtags-add__input"
-                            spellcheck="false"
-                            id="FormControlHashtags"
-                            placeholder="Add up to 4 tags..."
-                          />
-                        </ul>
-
-                        <div
-                          class="text-editor d-flex justify-content-between bg-light"
-                          id="markdown-mock"
-                        >
-                          <div class="text-editor-container d-flex">
-                            <a
-                              href="."
-                              class="iconoir-bold icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-italic icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-link icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-numbered-list-left icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-list icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-underline d-none d-lg-flex icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-quote d-none d-lg-flex icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-code d-none d-lg-flex icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-code-brackets-square d-none d-lg-flex icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-flash d-none d-lg-flex icons-style"
-                              target="_blank"
-                            ></a>
-                            <a
-                              href="."
-                              class="iconoir-media-image icons-style"
-                              target="_blank"
-                            ></a>
-                          </div>
-                          <div class="text-editor-container--more">
-                            <a
-                              href="."
-                              class="iconoir-more-vert icons-style"
-                              target="_blank"
-                            ></a>
+                    <div class="container">
+                      <div class="row">
+                        <div class="">
+                          <div class="p-4 bg-white border rounded">
+                            <!-- <style>
+                                /* Estilo específico para el placeholder del textarea */
+                                ::placeholder {
+                                  font-size: 20px; /* Tamaño de la letra para el placeholder */
+                                  color: #999; /* Color del texto del placeholder */
+                                }
+                              </style> -->
+                              <div class="card border-0 rounded-3">
+                                <div class="card-body">
+                                  <input
+                                    type="text"
+                                    class="form-control border border-secondary-subtle d-inline shadow-none"
+                                    placeholder="Insert the link of your header img here..."
+                                    id="post-image-input"
+                                  />
+          
+                                  <input
+                                    type="text"
+                                    class="form-control border border-secondary-subtle d-inline"
+                                    placeholder="Insert the post author name..."
+                                    id="post-author-input"
+                                  />
+          
+                                  <input
+                                    type="text"
+                                    class="form-control border border-secondary-subtle d-inline shadow-none"
+                                    placeholder="Insert the post author profile picture"
+                                    id="post-author-picture"
+                                  />
+          
+                                  <textarea
+                                    class="form-control border border-0 shadow-none text-break fs-1 fw-bold "
+                                    id="FormControlTextarea1"
+                                    placeholder="New post title here..."
+                                  ></textarea>
+                                 
+                                    <input
+                                      type="text"
+                                      class="hashtags-add__input"
+                                      spellcheck="false"
+                                      id="FormControlHashtags"
+                                      placeholder="Add up to 4 tags..."
+                                    />
+                                  
+          
+                                  <div
+                                    class="text-editor d-flex justify-content-between bg-light border border-danger"
+                                    id="markdown-mock"
+                                  >
+                                    <div class="text-editor-container d-flex  border border-danger">
+                                      <a
+                                        href="."
+                                        class="iconoir-bold icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-italic icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-link icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-numbered-list-left icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-list icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-underline d-none d-lg-flex icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-quote d-none d-lg-flex icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-code d-none d-lg-flex icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-code-brackets-square d-none d-lg-flex icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-flash d-none d-lg-flex icons-style"
+                                        target="_blank"
+                                      ></a>
+                                      <a
+                                        href="."
+                                        class="iconoir-media-image icons-style"
+                                        target="_blank"
+                                      ></a>
+                                    </div>
+                                    <div class="text-editor-container--more">
+                                      <a
+                                        href="."
+                                        class="iconoir-more-vert icons-style"
+                                        target="_blank"
+                                      ></a>
+                                    </div>
+                                  </div>
+                                  <textarea
+                                    class="form-control font-monospace border border-0 shadow-none pt-3"
+                                    id="FormControlTextarea2"
+                                    rows="3"
+                                    placeholder="Write your post content..."
+                                    style="height: 500px"
+                                  ></textarea>
+                                  <textarea
+                                    class="form-control font-monospace border border-0 shadow-none pt-3"
+                                    id="FormControlTextarea3"
+                                    rows="3"
+                                    placeholder="Time to read..."
+                                    style="height: 50px"
+                                  ></textarea>
+                                </div>
+                              </div>
+                            </form>
+                            </p>
                           </div>
                         </div>
-                        <textarea
-                          class="form-control font-monospace border border-0 shadow-none pt-3"
-                          id="FormControlTextarea2"
-                          rows="3"
-                          placeholder="Write your post content..."
-                          style="height: 500px"
-                        ></textarea>
-                        <textarea
-                          class="form-control font-monospace border border-0 shadow-none pt-3"
-                          id="FormControlTextarea3"
-                          rows="3"
-                          placeholder="Time to read..."
-                          style="height: 50px"
-                        ></textarea>
                       </div>
                     </div>
-                  </form>
+
+                   
                   <div class="d-flex aling-items-center my-3 gap-3">
                     <button
                       type="button"

@@ -1,4 +1,4 @@
-alert("Js conectado");
+// alert("Js conectado");
 
 const createPost = () => {
   let postImg = document.getElementById("post-image-input").value;
