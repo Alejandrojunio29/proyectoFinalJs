@@ -1,6 +1,5 @@
-// alert("javascriot cargadi");
 let passwordToken = document.getElementById("password-input").value;
-let mitoken = localStorage.getItem(passwordToken);
+let mitoken = localStorage.getItem("token");
 
 const login = () => {
   let passwordToken = document.getElementById("password-input").value;

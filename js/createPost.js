@@ -2,9 +2,7 @@
 const isRelevant = () => {
   let rand = Math.floor(Math.random() * 2 + 1);
   return rand === 1 ? true : false;
-  
 };
-
 
 const createPost = () => {
   let postImg = document.getElementById("post-image-input").value;
@@ -21,9 +19,8 @@ const createPost = () => {
   const resultisRelevant = () => {
     let rand = Math.floor(Math.random() * 2 + 1);
     return rand === 1 ? true : false;
-
   };
-  let isRelevant =resultisRelevant()
+  let isRelevant = resultisRelevant();
 
   let postObject = {
     postImg,
