@@ -35,10 +35,10 @@ const getPostById = async (postId) => {
     document.getElementById("userName").textContent = userName;
     document.getElementById("postDate").textContent = date;
     document.getElementById("postTitle").textContent = title;
-    document.getElementById("hashtag1").textContent = hashtag1;
-    document.getElementById("hashtag2").textContent = hashtag2;
-    document.getElementById("hashtag3").textContent = hashtag3;
-    document.getElementById("hashtag4").textContent = hashtag4;
+    document.getElementById("hashtag1").textContent = "#" + hashtag1;
+    document.getElementById("hashtag2").textContent = "#" + hashtag2;
+    document.getElementById("hashtag3").textContent = "#" + hashtag3;
+    document.getElementById("hashtag4").textContent = "#" + hashtag4;
     document.getElementById("postContent").textContent = postContent;
   }
 };
@@ -59,7 +59,6 @@ logoutButton.addEventListener("click", logout);
 logoutButton.addEventListener("click", (_) => {
   location.reload();
 });
-
 
 let token = localStorage.getItem("token");
 console.log(token);
