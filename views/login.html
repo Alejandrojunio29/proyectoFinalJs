@@ -20,7 +20,7 @@
   <body>
     <div class="container">
       <div class="d-block p-2  text-center">
-        <a class="d-flex justify-content-center gap-5 m-3" href="index.html">
+        <a class="d-flex justify-content-center gap-5 m-3" href="../index.html">
           <img
             class="text-center"
             src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
@@ -72,13 +72,14 @@
         <div class="container pt-3">
           <p class="d-flex fs-6 m-0">Email</p>
           <input
+          id="email-input"
             class="d-flex w-100 border border-dark-subtle rounded-1 p-1"
             type="text"
           />
         </div>
         <div class="container mt-3">
           <p class="d-flex fs-6 m-0">Password</p>
-          <input
+          <input id="password-input"
             class="d-flex w-100 border border-dark-subtle rounded-1 p-1"
             type="text"
           />
@@ -89,12 +90,13 @@
             </div>
             <a class="m-1">Forgot password?</a>
           </div>
-          <button
+          <button  id="logIn-button"
             type="button"
             class="btn border mt-3 pt-2 w-100 bg-primary text-white"
           >
             Log in
           </button>
+         
           <div
             class="d-flex justify-content-center align-items-center text-body-secondary">
             <p class="mt-3 fst-italic">
@@ -146,5 +148,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/main.js"> </script>
   </body>
 </html>

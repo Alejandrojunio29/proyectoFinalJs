@@ -1,3 +1,4 @@
+
 const getAllPosts = async () => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
@@ -360,3 +361,17 @@ relevantButton.addEventListener("click", async (event) => {
     }
   }
 });
+
+
+let loginButton = document.getElementById("login-button")
+loginButton.addEventListener("click", ()=>{
+  window.open("views/login.html", "_self")
+});
+
+
+const logout = ()=> {
+  localStorage.removeItem("token")
+}
+
+let logoutButton = document.getElementById("logout-button")
+logoutButton.addEventListener("click", logout)
