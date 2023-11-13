@@ -1,4 +1,3 @@
-
 const getAllPosts = async () => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
@@ -186,7 +185,7 @@ const createPostCard = (post) => {
   mainContainer.append(postimg, secondContainer);
 
   mainContainer.addEventListener("click", () => {
-    window.open("views/postDetail.html", "_blank");
+    window.open(`views/postDetail.html?entryKey=${key}`, "_blank");
   });
 
   return mainContainer;
@@ -371,16 +370,14 @@ relevantButton.addEventListener("click", async (event) => {
   }
 });
 
-
-let loginButton = document.getElementById("login-button")
-loginButton.addEventListener("click", ()=>{
-  window.open("views/login.html", "_self")
+let loginButton = document.getElementById("login-button");
+loginButton.addEventListener("click", () => {
+  window.open("views/login.html", "_self");
 });
 
+const logout = () => {
+  localStorage.removeItem("token");
+};
 
-const logout = ()=> {
-  localStorage.removeItem("token")
-}
-
-let logoutButton = document.getElementById("logout-button")
-logoutButton.addEventListener("click", logout)
+let logoutButton = document.getElementById("logout-button");
+logoutButton.addEventListener("click", logout);
