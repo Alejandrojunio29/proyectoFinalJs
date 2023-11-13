@@ -20,27 +20,38 @@
 
 const getAllPosts = async () => {
   let postWrapper = document.getElementById("main-side");
-  postWrapper.innerHTML="";
+  postWrapper.innerHTML = "";
   let response = await fetch(
     "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
   );
   let dataPosts = await response.json();
   console.log("este es la ", dataPosts);
-  if (dataPosts){
-    let postsArray =Object.entries(dataPosts);
+  if (dataPosts) {
+    let postsArray = Object.entries(dataPosts);
     console.log("este es el", postsArray);
-    let combinedPosts= postsArray.reduce((accum, current) =>{
-      return [...accum, {key:current[0], ...current[1]}];
+    let combinedPosts = postsArray.reduce((accum, current) => {
+      return [...accum, { key: current[0], ...current[1] }];
     }, []);
-allPosts= combinedPosts;
-printAllCards(allPosts );
+    allPosts = combinedPosts;
+    printAllCards(allPosts);
   } //agregar un else que notifique que hacer en caso de no haber posts
 };
 
 getAllPosts();
 
 const createPostCard = (post) => {
-  let { postImg, date, hashtag1, hashtag2, hashtag3, hashtag4, timeToRead, title, userName, userImg } = post;
+  let {
+    postImg,
+    date,
+    hashtag1,
+    hashtag2,
+    hashtag3,
+    hashtag4,
+    timeToRead,
+    title,
+    userName,
+    userImg,
+  } = post;
 
   let mainContainer = document.createElement("div");
   mainContainer.classList.add("card", "mb-3");
@@ -198,7 +209,7 @@ const printAllCards = (postsArray) => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
   postsArray.forEach((post) => {
-    let postCard =createPostCard(post) 
+    let postCard = createPostCard(post);
     postWrapper.append(postCard);
   });
 };
@@ -207,12 +218,10 @@ const printAllCards = (postsArray) => {
 //   let postWrapper = document.getElementById("main-side");
 //   postWrapper.innerHTML = "";
 //   postsArray.forEach((post) => {
-//     let postCard =createPostCard(post) 
+//     let postCard =createPostCard(post)
 //     postWrapper.append(postCard);
 //   });
 // };
-
-
 
 // let filterByRelevant = document.getElementById("relevant-button");
 
@@ -229,13 +238,13 @@ const printAllCards = (postsArray) => {
 //     cardMainList.removeChild(cardMainList.lastChild);
 //   }
 // };
-const respuesta = async ()=> {
-  let officialResponse= await fetch(
-    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json")
-    let realOfficialResponse  =  await officialResponse.json()
-    return realOfficialResponse
-
-}
+const respuesta = async () => {
+  let officialResponse = await fetch(
+    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
+  );
+  let realOfficialResponse = await officialResponse.json();
+  return realOfficialResponse;
+};
 
 //Esta funcion NO LE MUEVAS PERRO, ES LA QUE ACOMODA LOS POSTS POR FECHA
 const filterLatest = async () => {
@@ -244,14 +253,30 @@ const filterLatest = async () => {
   );
   let dataPosts = await response.json();
   let result = [];
-console.log("posts", dataPosts)
+  console.log("posts", dataPosts);
   for (key in dataPosts) {
-    let { postImg, postContent, date, timeToRead, hashtag1, userName, userImg } = dataPosts[key];
-    result.push({  postImg, postContent, date, timeToRead, hashtag1, userName, userImg, key });
+    let {
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      userName,
+      userImg,
+    } = dataPosts[key];
+    result.push({
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      userName,
+      userImg,
+      key,
+    });
   }
   return result.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
-
 
 const latestButton = document.getElementById("latest-button");
 latestButton.addEventListener("click", async (event) => {
@@ -265,12 +290,13 @@ latestButton.addEventListener("click", async (event) => {
   //cleanList();
   console.log("esta es la lista latest", latestObjects);
   latestObjects.forEach(async (object) => {
-    let post =  [{postImg, postContent, date, timeToRead, hashtag1, userName, userImg} =object]; 
-        console.log("este es post22222",post);
-        let mainContainer = document.getElementById("main-side");
-        let card = printAllCards(latestObjects);
-        mainContainer.append(card);
-        
-      }
-    
-  );});
+    let post = [
+      ({ postImg, postContent, date, timeToRead, hashtag1, userName, userImg } =
+        object),
+    ];
+    console.log("este es post22222", post);
+    let mainContainer = document.getElementById("main-side");
+    let card = printAllCards(latestObjects);
+    mainContainer.append(card);
+  });
+});
