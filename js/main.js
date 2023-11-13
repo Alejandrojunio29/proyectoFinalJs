@@ -381,3 +381,26 @@ const logout = () => {
 
 let logoutButton = document.getElementById("logout-button");
 logoutButton.addEventListener("click", logout);
+logoutButton.addEventListener("click", (_) => {
+  location.reload();
+});
+
+let token = localStorage.getItem("token");
+console.log(token);
+if (token) {
+  document.getElementById("login-button").classList.add("d-none");
+  document.getElementById("login-button").classList.remove("d-lg-block");
+  document.getElementById("create-account").classList.add("d-none");
+  document.getElementById("create-post").classList.remove("d-none");
+  document.getElementById("photo-user").classList.remove("d-none");
+}
+
+let createAccountButton = document.getElementById("create-account");
+createAccountButton.addEventListener("click", () => {
+  window.open("views/login.html", "_self");
+});
+
+let redirectToCreatePost = document.getElementById("create-post");
+redirectToCreatePost.addEventListener("click", () => {
+  window.open("views/createPost.html", "_self");
+});

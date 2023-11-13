@@ -34,13 +34,14 @@
                   <ul class="navbar-nav gap-2">
                     <button id="login-button" type="button" class="btn btn-outline-secondary btn-sm d-none d-lg-block"> Log In </button>
                     <button id="create-account" type="button" class="btn btn-outline-primary btn-sm">Create Account </button>
+                    <button id="create-post" type="button" class="btn btn-outline-primary d-none btn-sm">Create Post </button>
                    
-                    <li id="photo-user" class="nav-item dropdown">
+                    <li id="photo-user" class="nav-item dropdown d-none">
                       <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="rounded-circle shadow-6-strong " style= "height:40px" alt="avatar2" src="https://xsgames.co/randomusers/assets/avatars/male/74.jpg" alt="">
                         
                       </a>
-                      <ul class="dropdown-menu">
+                      <ul id="dropdown-menu-user" class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a role="button" id="logout-button" class="dropdown-item" href="#">Log Out</a></li>
@@ -235,8 +236,8 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script src="js/main.js"></script>
-    <script src="js/createPost.js"></script>
-    <script src="js/login.js"></script>
+    <script type="" src="js/main.js"></script>
+    
+   
   </body>
 </html>
