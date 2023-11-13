@@ -32,10 +32,10 @@
 
                 <div class=" navbar-collapse d-flex flex-sm-row flex-md-row flex-lg-row justify-content-end" id="navbarNavDropdown">
                   <ul class="navbar-nav gap-2">
-                    <button type="button" class="btn btn-outline-secondary btn-sm d-none d-lg-block"> Log In </button>
-                    <button type="button" class="btn btn-outline-primary btn-sm">Create Account </button>
+                    <button id="login-button" type="button" class="btn btn-outline-secondary btn-sm d-none d-lg-block"> Log In </button>
+                    <button id="create-account" type="button" class="btn btn-outline-primary btn-sm">Create Account </button>
                    
-                    <li class="nav-item dropdown">
+                    <li id="photo-user" class="nav-item dropdown">
                       <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="rounded-circle shadow-6-strong " style= "height:40px" alt="avatar2" src="https://xsgames.co/randomusers/assets/avatars/male/74.jpg" alt="">
                         
@@ -43,7 +43,7 @@
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a role="button" id="logout-button" class="dropdown-item" href="#">Log Out</a></li>
                     </ul>
                     </li>
                   </ul>
@@ -137,7 +137,7 @@
                           <a class="btn btn-light  btn-sm " href="" ><small> ❤️🤔😂😎 Reactions</small></a>
                           <a class="btn border-0 text-black btn-outline-secondary  btn-sm " href="" ><small> 📩 52 comments </small></a>
                           <p class="card-text d-flex "><small class="text-body-secondary">3 mins read ⌛</small></p>
-
+                         
 
                         </div>
                       </div>
@@ -218,7 +218,6 @@
                  </div>
                  <small class="text-body-secondary">And some muted small print.</small>
                </a>
-               <p>buenas buenas</p>
                 
  
                  
@@ -238,5 +237,6 @@
     ></script>
     <script src="js/main.js"></script>
     <script src="js/createPost.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>
