@@ -111,86 +111,159 @@
                         <p>However, with so many tools available, it's easy to get lost in the sea of options, leading to decision fatigue and inefficiency.</p>
                         <p>In this article, I've handpicked a list of 17 tools to address specific productivity challenges you may face from screen recording, keyboard shortcuts, and clipboard management to working with Regex, terminals, DB entries, APIs, and more.</p>
                         <p>I've included direct links, descriptions, and visuals so that you can get an initial impression of each tool right away.</p>
-                        <hr>
+
+                        <nav class="navbar navbar-light  justify-content-between">
+                          <a class="navbar-brand">
+                            <h2> Top comments (18)  </h2>
+                          </a>
+                          <form class="form-inline">                
+                            <button type="button" class="btn btn-outline-secondary" ">Subscribe</button>
+                          </form>
+                        </nav>
+                        <div class="container mt-4">          
+                          <!-- Formulario para agregar comentarios -->
+                          <form id="commentForm">
+                            <div class="form-group">
+                              <!-- <label for="comment">ggg</label> -->
+            
+                              <div class="card-body">
+                                <div id="user-container" class="d-flex flex-row mb-2 ms-1">
+            
+                              <img class="rounded-circle shadow-4-strong " style= "height:40px" alt="avatar2" src="https://res.cloudinary.com/practicaldev/image/fetch/s--OOUqz_il--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/159737/10b8de99-9383-42da-80e2-851af40d5d0f.png" alt="">
+                               
+                              <textarea class="form-control" id="comment" rows="3" placeholder="Add to the discussion"></textarea>
+                                </div>
+                              <nav class="navbar navbar-light bg-light">
+                                <a class="navbar-brand" href="#">
+                                  <!-- <div id="tags-container" class="flex-row"> -->
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-regular fa-b"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-regular fa-i"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-solid fa-paperclip"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-solid fa-list"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-solid fa-list"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-solid fa-h"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-solid fa-quote-left"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-regular fa-image"></i></a>
+                                  <a class="btn border-0 text-black btn-outline-secondary btn-sm" role="button"  href=""><i class="fa-solid fa-period"></i></a>
+                                  </div>
+                                  <br>
+                                  
+                                </a>
+                              </nav>                 
+                            </div>               
+                            <button type="button" class="btn btn-primary " onclick="addComment()">Submit</button>
+                            <button type="button" class="btn btn-secondary" ">Preview</button>
+                            
+                          </form>
                         
+                          <!-- Contenedor de tarjetas de comentarios -->
+                          <div id="commentContainer" class="mt-4">
+                            <!-- Las nuevas tarjetas de comentarios se agregarán aquí -->                              
+
+                          </div>
+                        </div>            
                         </div>
-                        <div class="d-flex justify-content-between mt-3">             
-
-
                         </div>
                       </div>
                     </div>
-            </div>         
-            
-        </div>
-
-        <div id="right-side" class="d-none d-lg-block col-lg-3">
-          <div class=" list-group p-2 m-0 ">                             
-              <div class="d-flex w-100 justify-content-between">                  
-              </div>
-              <small class="text-body-secondary"></small>
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <div id="right-side" style= "border-top: 50px solid#5700b4;"> 
-                <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4L_SFF-C--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/159737/10b8de99-9383-42da-80e2-851af40d5d0f.png" class="crayons-avatar__image" alt="" loading="lazy">
-                <span class="crayons-link crayons-subtitle-2 mt-5">Madza</span>
-                <button class="btn btn-primary w-100" type="submit">Follow</button>
-                <div class="color-base-70">
-                  Discussions. 💬 Tools. 🛠 Resources. 📚 All things productivity. 🎯🚀💯
+            </div> 
+            <div id="right-side" class="d-none d-lg-block col-lg-3">
+              <div class=" list-group p-2 m-0 ">                             
+                  <div class="d-flex w-100 justify-content-between">                  
+                  </div>
+                  <small class="text-body-secondary"></small>
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <div id="right-side" style= "border-top: 50px solid#5700b4;"> 
+                    <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4L_SFF-C--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/159737/10b8de99-9383-42da-80e2-851af40d5d0f.png" class="crayons-avatar__image" alt="" loading="lazy">
+                    <span class="crayons-link crayons-subtitle-2 mt-5">Madza</span>
+                    <button class="btn btn-primary w-100" type="submit">Follow</button>
+                    <div class="color-base-70">
+                      Discussions. 💬 Tools. 🛠 Resources. 📚 All things productivity. 🎯🚀💯
+                    </div>
+                    <div class="key">
+                      Joined
+                    </div>
+                    <div class="value">
+                      <time datetime="2019-04-23T13:19:44Z" class="date">23 abr 2019</time>
+                    </div>                    
+                  </div>
+                </div>                   
                 </div>
-                <div class="key">
-                  Joined
-                </div>
-                <div class="value">
-                  <time datetime="2019-04-23T13:19:44Z" class="date">23 abr 2019</time>
-                </div>                    
-              </div>
-            </div>              
-
-              
+                <div class="list-group p-2 m-0">
+                  <li class="list-group-item list-group-item-action">
+                      <a href="#" class=" fs-5 fw-bold text-reset link-primary link-underline-opacity-0 link-underline-opacity-0-hover" ><h3 class="crayons-subtitle-2">
+                        More from <a href=>Madza</a></a>
+                  </li>
+                  <a href="#" class="list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-between">
+                     <p class="mb-1 text-reset link-primary  link-underline-opacity-0 link-underline-opacity-0-hover ">42 Developer Resources to Kickstart Your Coding Journey 🚀🔥</p>
+                   </div>
+                   <small class="text-body-secondary"><span class="mr-1"><span class="opacity-50">#</span>programming</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>beginners</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>productivity</span></small>
+                 </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-between">
+                     <p class="mb-1 text-reset link-primary  link-underline-opacity-0 link-underline-opacity-0-hover "> 24 Open-Source Projects for Developers in 2023 🔥👍</p>
+                   </div>
+                   <small class="text-body-secondary"><span class="opacity-50">#</span>opensource</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>github</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>programming</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>webdev</span></small>
+                 </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-between">
+                     <p class="mb-1 text-reset link-primary  link-underline-opacity-0 link-underline-opacity-0-hover ">21 AI Productivity Tools to Improve Your Workflow 🔥🚀</p>
+                   </div>
+                   <small class="text-body-secondary"><span class="mr-1"><span class="opacity-50">#</span>ai</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>coding</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
+                    <span class="mr-1"><span class="opacity-50">#</span>tools</span></small>
+                 </a>              
             </div>
-            <div class="list-group p-2 m-0">
-              <li class="list-group-item list-group-item-action">
-                  <a href="#" class=" fs-5 fw-bold text-reset link-primary link-underline-opacity-0 link-underline-opacity-0-hover" ><h3 class="crayons-subtitle-2">
-                    More from <a href=>Madza</a></a>
-              </li>
-              <a href="#" class="list-group-item list-group-item-action">
-               <div class="d-flex w-100 justify-content-between">
-                 <p class="mb-1 text-reset link-primary  link-underline-opacity-0 link-underline-opacity-0-hover ">42 Developer Resources to Kickstart Your Coding Journey 🚀🔥</p>
-               </div>
-               <small class="text-body-secondary"><span class="mr-1"><span class="opacity-50">#</span>programming</span>
-                <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
-                <span class="mr-1"><span class="opacity-50">#</span>beginners</span>
-                <span class="mr-1"><span class="opacity-50">#</span>productivity</span></small>
-             </a>
-              <a href="#" class="list-group-item list-group-item-action">
-               <div class="d-flex w-100 justify-content-between">
-                 <p class="mb-1 text-reset link-primary  link-underline-opacity-0 link-underline-opacity-0-hover "> 24 Open-Source Projects for Developers in 2023 🔥👍</p>
-               </div>
-               <small class="text-body-secondary"><span class="opacity-50">#</span>opensource</span>
-                <span class="mr-1"><span class="opacity-50">#</span>github</span>
-                <span class="mr-1"><span class="opacity-50">#</span>programming</span>
-                <span class="mr-1"><span class="opacity-50">#</span>webdev</span></small>
-             </a>
-              <a href="#" class="list-group-item list-group-item-action">
-               <div class="d-flex w-100 justify-content-between">
-                 <p class="mb-1 text-reset link-primary  link-underline-opacity-0 link-underline-opacity-0-hover ">21 AI Productivity Tools to Improve Your Workflow 🔥🚀</p>
-               </div>
-               <small class="text-body-secondary"><span class="mr-1"><span class="opacity-50">#</span>ai</span>
-                <span class="mr-1"><span class="opacity-50">#</span>coding</span>
-                <span class="mr-1"><span class="opacity-50">#</span>productivity</span>
-                <span class="mr-1"><span class="opacity-50">#</span>tools</span></small>
-             </a>      
-
-               
+            <script
+                  src="https://kit.fontawesome.com/cb5f829db8.js"
+                  crossorigin="anonymous"
+                ></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            
+            <script>
+              function addComment() {
+                // Obtener el texto del comentario
+                var commentText = document.getElementById("comment").value;
+            
+                if (commentText.trim() !== "") {
+                  // Crear una nueva tarjeta de comentario
+                  var commentCard = document.createElement("div");
+                  commentCard.className = "card mt-3";
+                  commentCard.innerHTML = '<div class="card-body">' +
+                                            '<p class="card-text">' + commentText + '</p>' +
+                                          '</div>';
+            
+                  // Agregar la tarjeta de comentario al contenedor
+                  document.getElementById("commentContainer").appendChild(commentCard);
+            
+                  // Limpiar el campo de comentario después de agregarlo
+                  document.getElementById("comment").value = "";
+                }
+              }
+            </script>                                               
+                        </div>                        
+           <div class="d-flex justify-content-between mt-3"> 
+                        </div>
+                      </div>
+                    </div>
+                 </div>            
+               </div>               
              </div>
-      </div>                 
-               </div>
-        
-        </div>
-    
-
-
+           </div>                 
+        </div>        
+      </div>    
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       <script src="js/main.js"></script>
 </body>
