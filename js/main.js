@@ -31,7 +31,8 @@ const createPostCard = (post) => {
     title,
     userName,
     userImg,
-    postContent
+    postContent,
+    key,
   } = post;
 
   let mainContainer = document.createElement("div");
@@ -183,8 +184,16 @@ const createPostCard = (post) => {
 
   mainContainer.append(postimg, secondContainer);
 
+  mainContainer.addEventListener("click", () => {
+    window.open("views/postDetail.html", "_blank");
+  });
+
   return mainContainer;
 };
+
+// mainContainer.addEventListener("click", () => {
+//   window.open("views/postDetail.html", "_blank");
+// });
 
 const printAllCards = (postsArray) => {
   let postWrapper = document.getElementById("main-side");
@@ -223,7 +232,7 @@ const filterLatest = async () => {
       hashtag4,
       userName,
       userImg,
-      title
+      title,
     } = dataPosts[key];
     result.push({
       postImg,
@@ -236,7 +245,7 @@ const filterLatest = async () => {
       hashtag4,
       userName,
       userImg,
-      title
+      title,
     });
   }
   return result.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -338,7 +347,7 @@ relevantButton.addEventListener("click", async (event) => {
         hashtag4,
         userName,
         userImg,
-        isRelevant
+        isRelevant,
       } = posts[key];
       let postComplete = {
         postImg,
@@ -351,7 +360,7 @@ relevantButton.addEventListener("click", async (event) => {
         hashtag4,
         userName,
         userImg,
-        isRelevant
+        isRelevant,
       };
       console.log(postComplete);
       let mainContainer = document.querySelector("main-side");
