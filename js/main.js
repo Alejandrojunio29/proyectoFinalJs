@@ -90,7 +90,7 @@ const createPostCard = (post) => {
   );
   tag1.setAttribute("role", "button");
   tag1.href = "#";
-  tag1.innerText =`#${hashtag1}`;
+  tag1.innerText = `#${hashtag1}`;
 
   let tag2 = document.createElement("a");
   tag2.classList.add(
@@ -192,10 +192,12 @@ const printAllCards = (postsArray) => {
     let postCard = createPostCard(post);
     postWrapper.append(postCard);
   });
-  
-  
+};
+
 const getPosts = async () => {
-  let response = await fetch("https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json");
+  let response = await fetch(
+    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
+  );
   let data = await response.json();
   return data;
 };
@@ -209,10 +211,30 @@ const filterLatest = async () => {
   let result = [];
   console.log("posts", dataPosts);
   for (key in dataPosts) {
-
-    let { postImg, postContent, date, timeToRead, hashtag1, hashtag2,hashtag3, hashtag4, userName, userImg } = dataPosts[key];
-    result.push({  postImg, postContent, date, timeToRead, hashtag1, hashtag2,hashtag3, hashtag4, userName, userImg });
-
+    let {
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+    } = dataPosts[key];
+    result.push({
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+    });
   }
   return result.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
@@ -229,17 +251,28 @@ latestButton.addEventListener("click", async (event) => {
   //cleanList();
   console.log("esta es la lista latest", latestObjects);
   latestObjects.forEach(async (object) => {
+    let post = [
+      ({
+        postImg,
+        postContent,
+        date,
+        timeToRead,
+        hashtag1,
+        hashtag2,
+        hashtag3,
+        hashtag4,
+        userName,
+        userImg,
+      } = object),
+    ];
+    console.log("este es post22222", post);
+    let mainContainer = document.getElementById("main-side");
+    let card = printAllCards(latestObjects);
+    mainContainer.append(card);
+  });
+});
 
-    let post =  [{postImg, postContent, date, timeToRead, hashtag1, hashtag2,hashtag3, hashtag4, userName, userImg} =object]; 
-        console.log("este es post22222",post);
-        let mainContainer = document.getElementById("main-side");
-        let card = printAllCards(latestObjects);
-        mainContainer.append(card);
-      }
-  );});
-
-
-  const topButton = document.getElementById("top-button");
+const topButton = document.getElementById("top-button");
 topButton.addEventListener("click", async (event) => {
   let top = document.getElementById("top-button");
   let latest = document.getElementById("latest-button");
@@ -249,16 +282,38 @@ topButton.addEventListener("click", async (event) => {
   relevant.classList.remove("fw-bold");
   let postsInfo = await getAllPosts();
   for (post in postsInfo) {
-    let { postImg, postContent, date, timeToRead, hashtag1, hashtag2,hashtag3, hashtag4, userName, userImg } = postsInfo[post];
-    let postComplete = {postImg, postContent, date, timeToRead, hashtag1, hashtag2,hashtag3, hashtag4, userName, userImg};
-        console.log(postComplete);
-        let mainContainer = document.querySelector("main-side");
-        let card = printAllCards(postComplete, post);
-        mainContainer.appendChild(card);
-      }
-    });
+    let {
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+    } = postsInfo[post];
+    let postComplete = {
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+    };
+    console.log(postComplete);
+    let mainContainer = document.querySelector("main-side");
+    let card = printAllCards(postComplete, post);
+    mainContainer.appendChild(card);
+  }
+});
 
-    const relevantButton = document.getElementById("relevant-button");
+const relevantButton = document.getElementById("relevant-button");
 relevantButton.addEventListener("click", async (event) => {
   let top = document.getElementById("top-button");
   let latest = document.getElementById("latest-button");
@@ -269,14 +324,34 @@ relevantButton.addEventListener("click", async (event) => {
   let posts = await getPosts();
   for (key in posts) {
     if (posts[key].isRelevant) {
-      let { postImg, postContent, date, timeToRead, hashtag1, hashtag2,hashtag3, hashtag4, userName, userImg } = posts[key];
-          let postComplete = {postImg, postContent, date, timeToRead, hashtag1, hashtag2,hashtag3, hashtag4, userName, userImg};
-          console.log(postComplete);
-          let mainContainer = document.querySelector("main-side");
-          let card = printAllCards(postComplete, key);
-          mainContainer.appendChild(card);
-          };
-        }}
-);
-
-
+      let {
+        postImg,
+        postContent,
+        date,
+        timeToRead,
+        hashtag1,
+        hashtag2,
+        hashtag3,
+        hashtag4,
+        userName,
+        userImg,
+      } = posts[key];
+      let postComplete = {
+        postImg,
+        postContent,
+        date,
+        timeToRead,
+        hashtag1,
+        hashtag2,
+        hashtag3,
+        hashtag4,
+        userName,
+        userImg,
+      };
+      console.log(postComplete);
+      let mainContainer = document.querySelector("main-side");
+      let card = printAllCards(postComplete, key);
+      mainContainer.appendChild(card);
+    }
+  }
+});
