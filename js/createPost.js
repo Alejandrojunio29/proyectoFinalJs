@@ -25,7 +25,6 @@ const createPost = () => {
   };
   let isRelevant =resultisRelevant()
 
-
   let postObject = {
     postImg,
     title,
@@ -38,7 +37,7 @@ const createPost = () => {
     date,
     userName,
     userImg,
-    isRelevant
+    isRelevant,
   };
   return postObject;
 };
@@ -78,3 +77,9 @@ let hashtagInputs = document.getElementById(
 );
 
 hashtagInputs.addEventListener("click", onInputFocus);
+
+let openMain = document.getElementById("publish-btn");
+
+openMain.addEventListener("click", () => {
+  window.open("../index.html", "_self");
+});
