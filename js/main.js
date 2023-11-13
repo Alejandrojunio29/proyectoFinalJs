@@ -31,6 +31,7 @@ const createPostCard = (post) => {
     title,
     userName,
     userImg,
+    postContent
   } = post;
 
   let mainContainer = document.createElement("div");
@@ -222,6 +223,7 @@ const filterLatest = async () => {
       hashtag4,
       userName,
       userImg,
+      title
     } = dataPosts[key];
     result.push({
       postImg,
@@ -234,6 +236,7 @@ const filterLatest = async () => {
       hashtag4,
       userName,
       userImg,
+      title
     });
   }
   return result.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -335,6 +338,7 @@ relevantButton.addEventListener("click", async (event) => {
         hashtag4,
         userName,
         userImg,
+        isRelevant
       } = posts[key];
       let postComplete = {
         postImg,
@@ -347,6 +351,7 @@ relevantButton.addEventListener("click", async (event) => {
         hashtag4,
         userName,
         userImg,
+        isRelevant
       };
       console.log(postComplete);
       let mainContainer = document.querySelector("main-side");
