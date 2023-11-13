@@ -185,7 +185,7 @@ const createPostCard = (post) => {
   mainContainer.append(postimg, secondContainer);
 
   mainContainer.addEventListener("click", () => {
-    window.open(`views/postDetail.html?entryKey=${key}`, "_blank");
+    window.open(`views/postDetail.html?entryKey=${key}`, "_self");
   });
 
   return mainContainer;
