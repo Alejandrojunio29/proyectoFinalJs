@@ -19,7 +19,7 @@
     <nav class="bg-body-tertiary">
       <div class="d-flex justify-content-between">
         <div class="d-flex mt-2">
-          <a class="" href="index.html">
+          <a class="" href="../index.html">
             <img
               class="mx-3"
               src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
@@ -40,61 +40,52 @@
           </button>
         </div>
         <div class="mx-3 mt-2">
-          <a href=""><i class="fa-solid fa-x"></i></a>
+          <a href=""
+          class="link-dark"><i class="fa-solid fa-x"></i></a>
         </div>
       </div>
     </nav>
 
-    <div class="container">
-      <div class="container-fluid bg-light min-vh-100">
+
+
+    <div class="container d-flex">
+      
+      <div class="container-fluid d-flex bg-light ">
+       
         <div class="row justify-content-center">
           <div class="col-12 col-md-12 col-lg-12">
             <div class="container p-3">
               <div class="row">
-                <div class="col-md-9 col-12">
+                <div class="col-md-10 col-12">
                   <form>
-                    <div
-                      class="card border border-danger-subtle bg-danger-subtle d-none"
-                      id="error-card"
-                    >
-                      <div class="card-body" id="error-card-body">
-                        <h5 class="text-danger mb-2">
-                          Whoops, something went wrong:
-                        </h5>
-                      </div>
-                    </div>
+               
 
-                    <div class="container">
+                    <div class="container d-flex">
+                        
                       <div class="row">
                         <div class="">
-                          <div class="p-4 bg-white border rounded">
-                            <!-- <style>
-                                /* Estilo específico para el placeholder del textarea */
-                                ::placeholder {
-                                  font-size: 20px; /* Tamaño de la letra para el placeholder */
-                                  color: #999; /* Color del texto del placeholder */
-                                }
-                              </style> -->
+                          <div class="p-0 bg-white border rounded">
+                           
                               <div class="card border-0 rounded-3">
                                 <div class="card-body">
                                   <input
                                     type="text"
-                                    class="form-control border border-secondary-subtle d-inline shadow-none"
+                                    class="form-control border border-secondary-subtle d-inline p-1 m-1"
                                     placeholder="Insert the link of your header img here..."
                                     id="post-image-input"
                                   />
           
                                   <input
                                     type="text"
-                                    class="form-control border border-secondary-subtle d-inline"
+                                    class="form-control border border-secondary-subtle d-inline p-1 m-1"
                                     placeholder="Insert the post author name..."
                                     id="post-author-input"
                                   />
           
                                   <input
                                     type="text"
-                                    class="form-control border border-secondary-subtle d-inline shadow-none"
-                                    placeholder="Insert the post author profile picture"
+                                    class="form-control border border-secondary-subtle d-inline p-1 m-1"
+                                    placeholder="Insert the post author profile picture..."
                                     id="post-author-picture"
                                   />
           
@@ -103,91 +94,114 @@
                                     id="FormControlTextarea1"
                                     placeholder="New post title here..."
                                   ></textarea>
-                                 
+                                  <p class="text-start text-secondary px-4" id="hashtagText">Add up to 4 tags...</p>
+                                 <div class="text-center">
+                                   
                                     <input
-                                      type="text"
-                                      class="hashtags-add__input"
-                                      spellcheck="false"
-                                      id="FormControlHashtags"
-                                      placeholder="Add up to 4 tags..."
-                                    />
+                                    type="text" 
+                                    class="p-1 m-1 rounded border border-secondary-subtle "
+                                    spellcheck="false"
+                                    id="FormControlHashtags1"
+                                    placeholder="Hashtag 1..."
+                                  />
+                                  <input
+                                  type="text"
+                                  class="p-1 m-1 rounded border border-secondary-subtle"
+                                  spellcheck="false"
+                                  id="FormControlHashtags2"
+                                  placeholder="Hastag 2..."
+                                />
+                                <input
+                                type="text"
+                                class="p-1 m-1 rounded border border-secondary-subtle"
+                                spellcheck="false"
+                                id="FormControlHashtags3"
+                                placeholder="Hastag 3..."
+                              />
+                              <input
+                              type="text"
+                              class="p-1 m-1 rounded border border-secondary-subtle"
+                              spellcheck="false"
+                              id="FormControlHashtags4"
+                              placeholder="Hastag 4..."
+                            />
+                                 </div>
+                                    
                                   
-          
+          <!-- DIV QUE CONTIENE LOS ICONOS -->
                                   <div
-                                    class="text-editor d-flex justify-content-between bg-light border border-danger"
-                                    id="markdown-mock"
-                                  >
-                                    <div class="text-editor-container d-flex  border border-danger">
+                                    class="container px-2  mt-3 mx-3 d-flex flex-wrap justify-content-between bg-light p-3">
+                                   
                                       <a
-                                        href="."
-                                        class="iconoir-bold icons-style"
-                                        target="_blank"
-                                      ></a>
+                                        href=""
+                                        class="link-dark mx-0"
+                                        target=""
+                                      ><i class="fa-solid fa-b"></i></a>
                                       <a
-                                        href="."
-                                        class="iconoir-italic icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-link icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-numbered-list-left icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-list icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-underline d-none d-lg-flex icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-quote d-none d-lg-flex icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-code d-none d-lg-flex icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-code-brackets-square d-none d-lg-flex icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-flash d-none d-lg-flex icons-style"
-                                        target="_blank"
-                                      ></a>
-                                      <a
-                                        href="."
-                                        class="iconoir-media-image icons-style"
-                                        target="_blank"
-                                      ></a>
+                                      href=""
+                                      class="link-dark"
+                                      target=""
+                                    ><i class="fa-solid fa-italic"></i></a>
+                                    <a
+                                    href=""
+                                    class="link-dark"
+                                    target=""
+                                  ><i class="fa-solid fa-link"></i></a>
+                                  <a
+                                    href=""
+                                    class="link-dark"
+                                    target=""
+                                  ><i class="fa-solid fa-list-ol"></i></a>
+                                  <a
+                                    href=""
+                                    class="link-dark"
+                                    target=""
+                                  ><i class="fa-solid fa-list"></i></a>
+                                  <a
+                                    href=""
+                                    class="link-dark"
+                                    target=""
+                                  ><i class="fa-solid fa-h"></i></a>
+                                  <a
+                                    href=""
+                                    class="link-dark"
+                                    target=""
+                                  ><i class="fa-solid fa-quote-left"></i></a>
+                                  <a
+                                  href=""
+                                  class="link-dark"
+                                  target=""
+                                ><i class="fa-solid fa-code"></i></a>
+                                <a
+                                href=""
+                                class="link-dark"
+                                target=""
+                              ><i class="fa-solid fa-laptop-code"></i></a>
+                              <a
+                                href=""
+                                class="link-dark"
+                                target=""
+                              ><i class="fa-solid fa-bolt"></i></a>
+                              <a
+                                href=""
+                                class="link-dark"
+                                target="_blank"
+                              ><i class="fa-regular fa-image"></i></a>
+                              <a
+                                href=""
+                                class="link-dark mx-3"
+                                target=""
+                              ><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                      
                                     </div>
-                                    <div class="text-editor-container--more">
-                                      <a
-                                        href="."
-                                        class="iconoir-more-vert icons-style"
-                                        target="_blank"
-                                      ></a>
-                                    </div>
+                                    
                                   </div>
                                   <textarea
                                     class="form-control font-monospace border border-0 shadow-none pt-3"
                                     id="FormControlTextarea2"
                                     rows="3"
-                                    placeholder="Write your post content..."
-                                    style="height: 500px"
+                                    placeholder="Write your post content here..."
+                                    style="height: 300px"
                                   ></textarea>
                                   <textarea
                                     class="form-control font-monospace border border-0 shadow-none pt-3"
@@ -196,77 +210,66 @@
                                     placeholder="Time to read..."
                                     style="height: 50px"
                                   ></textarea>
+                                 
                                 </div>
+                       
                               </div>
+                              
                             </form>
-                            </p>
+                            
+                            
+
                           </div>
+                          
                         </div>
+                        
                       </div>
+                      
                     </div>
+                    
 
                    
-                  <div class="d-flex aling-items-center my-3 gap-3">
-                    <button
-                      type="button"
-                      class="btn btn-purple"
-                      id="publish-btn"
-                    >
-                      Publish
-                    </button>
+                  <div class="d-flex aling-items-center mx-2 my-2 gap-3">
+                   
+                        <button
+                       
+                        type="button"
+                        class="btn btn-secondary"
+                        id="publish-btn"
+                      >
+                        Publish
+                      </button>
+                 
+                    
                     <button type="button" class="btn btn-outline-purplewhite">
                       Save draft
                     </button>
                     <a
-                      href="."
-                      class="fa-solid fa-gear icons-style-md"
-                      target="_blank"
+                      href=""
+                      class="link-dark"
+                      target=""
                     >
+                    <i class="fa-solid fa-gear"></i>
                     </a>
+                   
                   </div>
+               
+                  
                 </div>
-                <div class="col-md-3 d-none d-md-flex">
-                  <div class="d-flex flex-column w-100">
-                    <div class="card-body invisible" id="card-post">
-                      <h5 class="card-title">Writing a Great Post Title</h5>
-                      <p class="card-text">
-                        Think of your post title as a super short (but
-                        compelling!) description — like an overview of the
-                        actual post in one short sentence. Use keywords where
-                        appropriate to help ensure people can find your post by
-                        search.
-                      </p>
-                    </div>
-                    <div class="card-body invisible" id="card-tagging">
-                      <h5 class="card-title">Tagging Guidelines</h5>
-                      <p class="card-text">
-                        Tags help people find your post. Think of tags as the
-                        topics or categories that best describe your post. Add
-                        up to four comma-separated tags per post. Combine tags
-                        to reach the appropriate subcommunities. Use existing
-                        tags whenever possible. Some tags, such as “help” or
-                        “healthydebate”, have special posting guidelines.
-                      </p>
-                    </div>
-                    <div class="card-body invisible" id="card-editor">
-                      <h5 class="card-title">Editor Basics</h5>
-                      <p class="card-text">
-                        Use Markdown to write and format posts. Commonly used
-                        syntax Embed rich content such as Tweets, YouTube
-                        videos, etc. Use the complete URL: {% embed https://...
-                        %}. See a list of supported embeds. In addition to
-                        images for the post's content, you can also drag and
-                        drop a cover image.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              
+                
+                    
+                     </div>
+                  
+                   </div>
+                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </div>
+         </div>
+         </div>
+       
     </div>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -274,5 +277,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/createPost.js"></script>
+    <script src="index.html"></script>
   </body>
 </html>

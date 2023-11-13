@@ -1,46 +1,39 @@
-// let postArray = [
-//   {
-//     date: "Nov 7",
-//     isRelevant: true,
-//     tags: {
-//       tag1: "kodemia",
-//       tag2: "programming",
-//       tag3: "computers",
-//       tag4: "javascript",
-//     },
-//     timeToRead: "10 min",
-//     title: "Testing post",
-//     userName: "El Pepe",
-
-//     postImg:
-//       "https://res.cloudinary.com/practicaldev/image/fetch/s--wP48g-um--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zfzl1bmezdynbmhj5smy.png",
-//     userImg: "https://xsgames.co/randomusers/assets/avatars/male/74.jpg",
-//   },
-// ];
-
 const getAllPosts = async () => {
   let postWrapper = document.getElementById("main-side");
-  postWrapper.innerHTML="";
+  postWrapper.innerHTML = "";
   let response = await fetch(
     "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
   );
   let dataPosts = await response.json();
   console.log("este es la ", dataPosts);
-  if (dataPosts){
-    let postsArray =Object.entries(dataPosts);
+  if (dataPosts) {
+    let postsArray = Object.entries(dataPosts);
     console.log("este es el", postsArray);
-    let combinedPosts= postsArray.reduce((accum, current) =>{
-      return [...accum, {key:current[0], ...current[1]}];
+    let combinedPosts = postsArray.reduce((accum, current) => {
+      return [...accum, { key: current[0], ...current[1] }];
     }, []);
-allPosts= combinedPosts;
-printAllCards(allPosts );
+    allPosts = combinedPosts;
+    printAllCards(allPosts);
   } //agregar un else que notifique que hacer en caso de no haber posts
 };
 
 getAllPosts();
 
 const createPostCard = (post) => {
-  let { postImg, date, hashtag1, hashtag2, hashtag3, hashtag4, timeToRead, title, userName, userImg } = post;
+  let {
+    postImg,
+    date,
+    hashtag1,
+    hashtag2,
+    hashtag3,
+    hashtag4,
+    timeToRead,
+    title,
+    userName,
+    userImg,
+    postContent,
+    key,
+  } = post;
 
   let mainContainer = document.createElement("div");
   mainContainer.classList.add("card", "mb-3");
@@ -99,7 +92,7 @@ const createPostCard = (post) => {
   );
   tag1.setAttribute("role", "button");
   tag1.href = "#";
-  tag1.innerText = hashtag1;
+  tag1.innerText = `#${hashtag1}`;
 
   let tag2 = document.createElement("a");
   tag2.classList.add(
@@ -111,7 +104,7 @@ const createPostCard = (post) => {
   );
   tag2.setAttribute("role", "button");
   tag2.href = "#";
-  tag2.innerText = hashtag2;
+  tag2.innerText = `#${hashtag2}`;
 
   let tag3 = document.createElement("a");
   tag3.classList.add(
@@ -123,7 +116,7 @@ const createPostCard = (post) => {
   );
   tag3.setAttribute("role", "button");
   tag3.href = "#";
-  tag3.innerText = hashtag3;
+  tag3.innerText = `#${hashtag3}`;
 
   let tag4 = document.createElement("a");
   tag4.classList.add(
@@ -135,7 +128,7 @@ const createPostCard = (post) => {
   );
   tag4.setAttribute("role", "button");
   tag4.href = "#";
-  tag4.innerText = hashtag4;
+  tag4.innerText = `#${hashtag4}`;
 
   let seventhContainer = document.createElement("div");
   seventhContainer.classList.add("d-flex", "justify-content-between", "mt-3");
@@ -191,51 +184,33 @@ const createPostCard = (post) => {
 
   mainContainer.append(postimg, secondContainer);
 
+  mainContainer.addEventListener("click", () => {
+    window.open(`views/postDetail.html?entryKey=${key}`, "_blank");
+  });
+
   return mainContainer;
 };
+
+// mainContainer.addEventListener("click", () => {
+//   window.open("views/postDetail.html", "_blank");
+// });
 
 const printAllCards = (postsArray) => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
   postsArray.forEach((post) => {
-    let postCard =createPostCard(post) 
+    let postCard = createPostCard(post);
     postWrapper.append(postCard);
   });
 };
 
-// const objectToArray = (postsArray) => {
-//   let postWrapper = document.getElementById("main-side");
-//   postWrapper.innerHTML = "";
-//   postsArray.forEach((post) => {
-//     let postCard =createPostCard(post) 
-//     postWrapper.append(postCard);
-//   });
-// };
-
-
-
-// let filterByRelevant = document.getElementById("relevant-button");
-
-// filterByRelevant.addEventListener("click", (event)=>{
-//   console.log(allPosts)
-//  let filterRelevantResult = getAllPosts.filter((post)=>{
-//   post.isRelevant =true ? alert("si hay post con true") : alert("post sin true")
-//  })
-//  console.log(filterRelevantResult);
-// })
-// const cleanList = () => {
-//   let cardMainList = document.querySelector("main-side");
-//   while (cardMainList.firstChild) {
-//     cardMainList.removeChild(cardMainList.lastChild);
-//   }
-// };
-const respuesta = async ()=> {
-  let officialResponse= await fetch(
-    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json")
-    let realOfficialResponse  =  await officialResponse.json()
-    return realOfficialResponse
-
-}
+const getPosts = async () => {
+  let response = await fetch(
+    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
+  );
+  let data = await response.json();
+  return data;
+};
 
 //Esta funcion NO LE MUEVAS PERRO, ES LA QUE ACOMODA LOS POSTS POR FECHA
 const filterLatest = async () => {
@@ -244,33 +219,165 @@ const filterLatest = async () => {
   );
   let dataPosts = await response.json();
   let result = [];
-console.log("posts", dataPosts)
+  console.log("posts", dataPosts);
   for (key in dataPosts) {
-    let { postImg, postContent, date, timeToRead, hashtag1, userName, userImg } = dataPosts[key];
-    result.push({  postImg, postContent, date, timeToRead, hashtag1, userName, userImg, key });
+    let {
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+      title,
+    } = dataPosts[key];
+    result.push({
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+      title,
+    });
   }
   return result.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
-
 const latestButton = document.getElementById("latest-button");
 latestButton.addEventListener("click", async (event) => {
   let top = document.getElementById("top-button");
-  //let latest = document.getElementById("latest-botton");
+  let latest = document.getElementById("latest-button");
   let relevant = document.getElementById("relevant-button");
   top.classList.remove("fw-bold");
-  //latest.classList.add("fw-bold");
+  latest.classList.add("fw-bold");
   relevant.classList.remove("fw-bold");
   let latestObjects = await filterLatest();
   //cleanList();
   console.log("esta es la lista latest", latestObjects);
   latestObjects.forEach(async (object) => {
-    let post =  [{postImg, postContent, date, timeToRead, hashtag1, userName, userImg} =object]; 
-        console.log("este es post22222",post);
-        let mainContainer = document.getElementById("main-side");
-        let card = printAllCards(latestObjects);
-        mainContainer.append(card);
-        
-      }
-    
-  );});
+    let post = [
+      ({
+        postImg,
+        postContent,
+        date,
+        timeToRead,
+        hashtag1,
+        hashtag2,
+        hashtag3,
+        hashtag4,
+        userName,
+        userImg,
+      } = object),
+    ];
+    console.log("este es post22222", post);
+    let mainContainer = document.getElementById("main-side");
+    let card = printAllCards(latestObjects);
+    mainContainer.append(card);
+  });
+});
+
+const topButton = document.getElementById("top-button");
+topButton.addEventListener("click", async (event) => {
+  let top = document.getElementById("top-button");
+  let latest = document.getElementById("latest-button");
+  let relevant = document.getElementById("relevant-button");
+  top.classList.add("fw-bold");
+  latest.classList.remove("fw-bold");
+  relevant.classList.remove("fw-bold");
+  let postsInfo = await getAllPosts();
+  for (post in postsInfo) {
+    let {
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+    } = postsInfo[post];
+    let postComplete = {
+      postImg,
+      postContent,
+      date,
+      timeToRead,
+      hashtag1,
+      hashtag2,
+      hashtag3,
+      hashtag4,
+      userName,
+      userImg,
+    };
+    console.log(postComplete);
+    let mainContainer = document.querySelector("main-side");
+    let card = printAllCards(postComplete, post);
+    mainContainer.appendChild(card);
+  }
+});
+
+const relevantButton = document.getElementById("relevant-button");
+relevantButton.addEventListener("click", async (event) => {
+  let top = document.getElementById("top-button");
+  let latest = document.getElementById("latest-button");
+  let relevant = document.getElementById("relevant-button");
+  top.classList.remove("fw-bold");
+  latest.classList.remove("fw-bold");
+  relevant.classList.add("fw-bold");
+  let posts = await getPosts();
+  for (key in posts) {
+    if (posts[key].isRelevant) {
+      let {
+        postImg,
+        postContent,
+        date,
+        timeToRead,
+        hashtag1,
+        hashtag2,
+        hashtag3,
+        hashtag4,
+        userName,
+        userImg,
+        isRelevant,
+      } = posts[key];
+      let postComplete = {
+        postImg,
+        postContent,
+        date,
+        timeToRead,
+        hashtag1,
+        hashtag2,
+        hashtag3,
+        hashtag4,
+        userName,
+        userImg,
+        isRelevant,
+      };
+      console.log(postComplete);
+      let mainContainer = document.querySelector("main-side");
+      let card = printAllCards(postComplete, key);
+      mainContainer.appendChild(card);
+    }
+  }
+});
+
+let loginButton = document.getElementById("login-button");
+loginButton.addEventListener("click", () => {
+  window.open("views/login.html", "_self");
+});
+
+const logout = () => {
+  localStorage.removeItem("token");
+};
+
+let logoutButton = document.getElementById("logout-button");
+logoutButton.addEventListener("click", logout);
