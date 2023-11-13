@@ -9,6 +9,11 @@ const createPost = () => {
   let userName = document.getElementById("post-author-input").value;
   let userImg = document.getElementById("post-author-picture").value;
   let date = new Date().toLocaleDateString();
+  let isRelevant = () => {
+    let rand = Math.floor(Math.random() * 2 + 1);
+    return rand === 1 ? true : false;
+  };
+
 
   let postObject = {
     postImg,
@@ -19,6 +24,7 @@ const createPost = () => {
     date,
     userName,
     userImg,
+    isRelevant
   };
   return postObject;
 };
