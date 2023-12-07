@@ -1,7 +1,7 @@
 // alert("Js cargando");
 
 const DB_ENDPOINT =
-  "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1";
+  "http://localhost:3001/posts";
 console.log("entry detail");
 
 let queryString = location.search;
@@ -14,10 +14,10 @@ let entryKey = params.get("entryKey");
 console.log("console log de entryKey", entryKey);
 
 const getPostById = async (postId) => {
-  let response = await fetch(`${DB_ENDPOINT}/${postId}/.json`);
+  let response = await fetch(`${DB_ENDPOINT}/${postId}`);
   let data = await response.json();
-  console.log(data);
-  if (data) {
+  console.log(data.data);
+  if (data.data) {
     let {
       postContent,
       postImg,
