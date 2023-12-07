@@ -40,22 +40,28 @@ const createPost = () => {
 };
 
 const createPostinDB = async (postObject) => {
-  let response = await fetch(
-    "http://localhost:3001/posts",
-    {
-      method: "POST",
-      body: JSON.stringify(postObject),
-    }
-  );
+  let response = await fetch("http://localhost:3001/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postObject),
+  });
+  console.log("response1:", response);
+
   let data = await response.json();
-  return data;
+  console.log("data", data.data);
+  return data.data;
+
+  console.log("data2:", data2);
+  return JSON.stringify(postObject);
 };
 
 const savePost = async () => {
   let postObject = createPost();
-  console.log(postObject);
+  console.log("postObject:", postObject);
   let response = await createPostinDB(postObject);
-  console.log(response);
+  console.log("response2:", response);
 };
 
 let savePostBtn = document.getElementById("publish-btn");
@@ -77,6 +83,6 @@ hashtagInputs.addEventListener("click", onInputFocus);
 
 let openMain = document.getElementById("publish-btn");
 
-openMain.addEventListener("click", () => {
-  window.open("../index.html", "_self");
-});
+// openMain.addEventListener("click", () => {
+//   window.open("../index.html", "_self");
+// });
