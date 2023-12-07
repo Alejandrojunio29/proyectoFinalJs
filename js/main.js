@@ -2,13 +2,13 @@ const getAllPosts = async () => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
   let response = await fetch(
-    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
+    "http://localhost:3001/posts"
   );
   let dataPosts = await response.json();
-  console.log("este es la ", dataPosts);
+  console.log("este es la datapost.data ", dataPosts.data);
   if (dataPosts) {
-    let postsArray = Object.entries(dataPosts);
-    console.log("este es el", postsArray);
+    let postsArray = Object.entries(dataPosts.data);
+    console.log("este es el postarray", postsArray);
     let combinedPosts = postsArray.reduce((accum, current) => {
       return [...accum, { key: current[0], ...current[1] }];
     }, []);
@@ -206,21 +206,21 @@ const printAllCards = (postsArray) => {
 
 const getPosts = async () => {
   let response = await fetch(
-    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
+    "http://localhost:3001/posts"
   );
   let data = await response.json();
-  return data;
+  return data.data;
 };
 
 //Esta funcion NO LE MUEVAS PERRO, ES LA QUE ACOMODA LOS POSTS POR FECHA
 const filterLatest = async () => {
   let response = await fetch(
-    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1/.json"
+    "http://localhost:3001/posts"
   );
   let dataPosts = await response.json();
   let result = [];
-  console.log("posts", dataPosts);
-  for (key in dataPosts) {
+  console.log("posts", dataPosts.data);
+  for (key in dataPosts.data) {
     let {
       postImg,
       postContent,
@@ -233,7 +233,7 @@ const filterLatest = async () => {
       userName,
       userImg,
       title,
-    } = dataPosts[key];
+    } = dataPosts.data[key];
     result.push({
       postImg,
       postContent,
@@ -334,9 +334,9 @@ relevantButton.addEventListener("click", async (event) => {
   latest.classList.remove("fw-bold");
   relevant.classList.add("fw-bold");
   let posts = await getPosts();
-  for (key in posts) {
-    if (posts[key].isRelevant) {
-      let {
+  posts.forEach(async post => {
+    if (post.isRelevant=="false") {
+      let { 
         postImg,
         postContent,
         date,
@@ -348,7 +348,7 @@ relevantButton.addEventListener("click", async (event) => {
         userName,
         userImg,
         isRelevant,
-      } = posts[key];
+      } = post;
       let postComplete = {
         postImg,
         postContent,
@@ -362,12 +362,16 @@ relevantButton.addEventListener("click", async (event) => {
         userImg,
         isRelevant,
       };
-      console.log(postComplete);
-      let mainContainer = document.querySelector("main-side");
-      let card = printAllCards(postComplete, key);
+      console.log("postcomplete",postComplete);//Hasta aqui jala NO TOCAR BOTON ROJO
+      let mainContainer = document.getElementById("main-side");
+      let card = createPostCard(postComplete);
+      console.log("card", card)
       mainContainer.appendChild(card);
     }
-  }
+  
+    
+  });
+ 
 });
 
 let loginButton = document.getElementById("login-button");

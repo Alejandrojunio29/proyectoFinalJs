@@ -41,7 +41,7 @@ const createPost = () => {
 
 const createPostinDB = async (postObject) => {
   let response = await fetch(
-    "https://devtodatabase-950dc-default-rtdb.firebaseio.com/posts/post1.json",
+    "http://localhost:3001/posts",
     {
       method: "POST",
       body: JSON.stringify(postObject),
