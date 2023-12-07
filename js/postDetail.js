@@ -1,8 +1,7 @@
 // alert("Js cargando");
 
-const DB_ENDPOINT =
-  "http://localhost:3001/posts";
-console.log("entry detail");
+const DB_ENDPOINT = `http://localhost:3001/posts`;
+// console.log("entry detail");
 
 let queryString = location.search;
 console.log("console log de query string", queryString);
@@ -10,11 +9,13 @@ console.log("console log de query string", queryString);
 let params = new URLSearchParams(queryString);
 console.log("console log de params", params);
 
-let entryKey = params.get("entryKey");
-console.log("console log de entryKey", entryKey);
+let paramsID = params.get("_id");
+
+// let entryKey = params.get("entryKey");
+// console.log("console log de entryKey", entryKey);
 
 const getPostById = async (postId) => {
-  let response = await fetch(`${DB_ENDPOINT}/${postId}`);
+  let response = await fetch(`${DB_ENDPOINT}${postId}/.json`);
   let data = await response.json();
   console.log(data.data);
   if (data.data) {
@@ -29,7 +30,7 @@ const getPostById = async (postId) => {
       hashtag4,
       userName,
       userImg,
-    } = data;
+    } = data.data;
     document.getElementById("postImg").src = postImg;
     document.getElementById("userImg").src = userImg;
     document.getElementById("userName").textContent = userName;
@@ -43,7 +44,7 @@ const getPostById = async (postId) => {
   }
 };
 
-getPostById(entryKey);
+getPostById(paramsID);
 
 let loginButton = document.getElementById("login-button");
 loginButton.addEventListener("click", () => {
