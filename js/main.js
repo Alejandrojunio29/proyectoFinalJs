@@ -1,9 +1,7 @@
 const getAllPosts = async () => {
   let postWrapper = document.getElementById("main-side");
   postWrapper.innerHTML = "";
-  let response = await fetch(
-    "http://localhost:3001/posts"
-  );
+  let response = await fetch("http://localhost:3001/posts");
   let dataPosts = await response.json();
   console.log("este es la datapost.data ", dataPosts.data);
   if (dataPosts) {
@@ -205,18 +203,14 @@ const printAllCards = (postsArray) => {
 };
 
 const getPosts = async () => {
-  let response = await fetch(
-    "http://localhost:3001/posts"
-  );
+  let response = await fetch("http://localhost:3001/posts");
   let data = await response.json();
   return data.data;
 };
 
 //Esta funcion NO LE MUEVAS PERRO, ES LA QUE ACOMODA LOS POSTS POR FECHA
 const filterLatest = async () => {
-  let response = await fetch(
-    "http://localhost:3001/posts"
-  );
+  let response = await fetch("http://localhost:3001/posts");
   let dataPosts = await response.json();
   let result = [];
   console.log("posts", dataPosts.data);
@@ -334,9 +328,9 @@ relevantButton.addEventListener("click", async (event) => {
   latest.classList.remove("fw-bold");
   relevant.classList.add("fw-bold");
   let posts = await getPosts();
-  posts.forEach(async post => {
-    if (post.isRelevant=="false") {
-      let { 
+  posts.forEach(async (post) => {
+    if (post.isRelevant == "false") {
+      let {
         postImg,
         postContent,
         date,
@@ -362,16 +356,13 @@ relevantButton.addEventListener("click", async (event) => {
         userImg,
         isRelevant,
       };
-      console.log("postcomplete",postComplete);//Hasta aqui jala NO TOCAR BOTON ROJO
+      console.log("postcomplete", postComplete); //Hasta aqui jala NO TOCAR BOTON ROJO
       let mainContainer = document.getElementById("main-side");
       let card = createPostCard(postComplete);
-      console.log("card", card)
+      console.log("card", card);
       mainContainer.appendChild(card);
     }
-  
-    
   });
- 
 });
 
 let loginButton = document.getElementById("login-button");
@@ -401,7 +392,7 @@ if (token) {
 
 let createAccountButton = document.getElementById("create-account");
 createAccountButton.addEventListener("click", () => {
-  window.open("views/login.html", "_self");
+  window.open("views/newUser.html", "_self");
 });
 
 let redirectToCreatePost = document.getElementById("create-post");
