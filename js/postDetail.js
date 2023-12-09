@@ -74,26 +74,10 @@ if (token) {
   document.getElementById("create-post").classList.remove("d-none");
   document.getElementById("photo-user").classList.remove("d-none");
   document.getElementById("editButon").classList.remove("d-none");
-  document.getElementById("deleteButon").classList.remove("d-none");
+  document.getElementById("deleteButton").classList.remove("d-none");
+  
 }
 
-const editPost = async (postObject) => {
-  const queryString = window.location.search;
-  console.log("quarystring", queryString);
-  const params = new URLSearchParams(queryString);
-  let savedId = params.get("id");
-  let response = await fetch(`${DB_ENDPOINT}/${savedId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(postObject),
-  });
-
-  let data = await response.json();
-  console.log("data", data.data);
-  return data.data;
-};
 
 let createAccountButton = document.getElementById("create-account");
 createAccountButton.addEventListener("click", () => {
