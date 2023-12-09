@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión con Bootstrap</title>
+    <title>Sing In</title>
     <!-- Incluye el enlace al archivo de estilo de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -15,41 +15,49 @@
           <div class="col-md-6 offset-md-3">
               <div class="card shadow-lg">
                   <div class="card-body">
-                    <div class="container d-flex">
-                        <a class="d-flex justify-content-end gap-5" href="index.html">
-                          <img
-                            class="w-50 h-50"
-                            src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
-                            alt=""
-                          />
-                        </a>
+                    <div class="d-block p-2  text-center">
+                      <a class="d-flex justify-content-center gap-5 m-3" href="../index.html">
+                        <img
+                          class="text-center"
+                          src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+                          alt=""
+                          width="75px"
+                          height="60px"
+                        />
+                      </a>
                         </div>
         <h2 class="text-center mb-4">Sign In</h2>
         <form>
+          <div class="form-group">
+            <label for="usuario">Name:</label>
+            <input type="text" class="form-control" id="name" required>
+            <label for="usuario">Lastname:</label>
+            <input type="text" class="form-control" id="lastname" name="usuario" required>
+        </div>
             <div class="form-group">
                 <label for="usuario">Email:</label>
-                <input type="text" class="form-control" id="usuario" name="usuario" required>
+                <input type="text" class="form-control" id="email" name="usuario" required>
                 <div id="emailHelp" class="form-text">We are never sharing your personal information.</div>
             </div>
 
             <div class="form-group">
                 <label for="contrasena">Password:</label>
-                <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                <input type="password" class="form-control" id="password" name="contrasena" required>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1" />
               <label class="form-check-label" for="exampleCheck1">Remember me</label>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block" id="btniniciado">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block" id="signInButton">Sign In</button>
         </form>
     </div>
 
-    <!-- Incluye los scripts de Bootstrap (jQuery y Popper.js) -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="../javascript/main.js"></script>
-    <script src="../javascript/condiciones.js"></script>
+    <script src="/js/createUser.js"></script>
+
 </body>
 </html>

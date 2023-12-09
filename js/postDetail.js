@@ -3,22 +3,26 @@
 const DB_ENDPOINT = `http://localhost:3001/posts`;
 // console.log("entry detail");
 
-let queryString = location.search;
-console.log("console log de query string", queryString);
+// let queryString = location.search;
+// console.log("console log de query string", queryString);
 
-let params = new URLSearchParams(queryString);
-console.log("console log de params", params);
+// let params = new URLSearchParams(queryString);
+// console.log("console log de params", params);
 
-let paramsID = params.get("_id");
+// let paramsID = params.get("_id");
 
 // let entryKey = params.get("entryKey");
 // console.log("console log de entryKey", entryKey);
 
-const getPostById = async (postId) => {
-  let response = await fetch(`${DB_ENDPOINT}${postId}/.json`);
+const getPostById = async (id) => {
+  const queryString = window.location.search;
+  console.log("quarystring", queryString);
+  const params = new URLSearchParams(queryString);
+  let savedId = params.get("id");
+  let response = await fetch(`${DB_ENDPOINT}/${savedId}`);
   let data = await response.json();
-  console.log(data.data);
-  if (data.data) {
+
+  if (data) {
     let {
       postContent,
       postImg,
@@ -44,7 +48,7 @@ const getPostById = async (postId) => {
   }
 };
 
-getPostById(paramsID);
+getPostById();
 
 let loginButton = document.getElementById("login-button");
 loginButton.addEventListener("click", () => {
@@ -80,3 +84,12 @@ let redirectToCreatePost = document.getElementById("create-post");
 redirectToCreatePost.addEventListener("click", () => {
   window.open("createPost.html", "_self");
 });
+
+const getUserToken = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const payload = token.split(".")[1];
+    const legiblePayload = JSON.parse(atob(payload));
+    return legiblePayload.id;
+  }
+};

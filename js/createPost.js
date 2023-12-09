@@ -35,8 +35,18 @@ const createPost = () => {
     userName,
     userImg,
     isRelevant,
+    postOwner: getUserToken(),
   };
   return postObject;
+};
+
+const getUserToken = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const payload = token.split(".")[1];
+    const legiblePayload = JSON.parse(atob(payload));
+    return legiblePayload.id;
+  }
 };
 
 const createPostinDB = async (postObject) => {
@@ -83,6 +93,6 @@ hashtagInputs.addEventListener("click", onInputFocus);
 
 let openMain = document.getElementById("publish-btn");
 
-// openMain.addEventListener("click", () => {
-//   window.open("../index.html", "_self");
-// });
+openMain.addEventListener("click", () => {
+  window.open("../index.html", "_self");
+});
