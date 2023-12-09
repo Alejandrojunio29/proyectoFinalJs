@@ -80,27 +80,39 @@ if (token) {
 
 //PARA ELIMINAR POST 
 
-// const idPostToDelete = async (id) => {
-//   const queryString = window.location.search;
-//   console.log("quarystring", queryString);
-//   const params = new URLSearchParams(queryString);
-//   let savedId = params.get("id");
+const idPostToDelete = async (id) => {
+  const queryString = window.location.search;
+  console.log("quarystring", queryString);
+  const params = new URLSearchParams(queryString);
+  let savedId = params.get("id");
   
-// return savedId
+return savedId
   
-// };
+};
 
-// const deletePostinDB = async (id) => {
-//   const connection = await fetch("http://localhost:3001/posts", {
-//      method: DELETE(id)
+const deletePostinDB = async (id) => {
+  const queryString = window.location.search;
+  console.log("quarystring", queryString);
+  const params = new URLSearchParams(queryString);
+  let savedId = params.get("id");
+  const connection = await fetch((`${DB_ENDPOINT}/${savedId}`), {
+     method: "DELETE",
+     headers: {
+      'Content-Type': 'application/json',
+    },
+   });
+   console.log("Post eliminado:");
+};
 
-//    });
-//    console.log("Post eliminado:", response);
-  
-// };
+let deleteButton = document.getElementById("deleteButton");
+deleteButton.addEventListener("click", ()=>{
+  deletePostinDB(idPostToDelete)
+} );
 
-// let deleteButton = document.getElementById("deleteButton");
-// deleteButton.addEventListener("click", alert("hola") );
+let deleteButton2 = document.getElementById("deleteButton");
+deleteButton.addEventListener("click", ()=>{
+  window.open("../index.html", "_self");
+} );
 
 let createAccountButton = document.getElementById("create-account");
 createAccountButton.addEventListener("click", () => {
