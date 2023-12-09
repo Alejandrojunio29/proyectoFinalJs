@@ -74,8 +74,33 @@ if (token) {
   document.getElementById("create-post").classList.remove("d-none");
   document.getElementById("photo-user").classList.remove("d-none");
   document.getElementById("editButon").classList.remove("d-none");
-  document.getElementById("deleteButon").classList.remove("d-none");
+  document.getElementById("deleteButton").classList.remove("d-none");
+  
 }
+
+//PARA ELIMINAR POST 
+
+// const idPostToDelete = async (id) => {
+//   const queryString = window.location.search;
+//   console.log("quarystring", queryString);
+//   const params = new URLSearchParams(queryString);
+//   let savedId = params.get("id");
+  
+// return savedId
+  
+// };
+
+// const deletePostinDB = async (id) => {
+//   const connection = await fetch("http://localhost:3001/posts", {
+//      method: DELETE(id)
+
+//    });
+//    console.log("Post eliminado:", response);
+  
+// };
+
+// let deleteButton = document.getElementById("deleteButton");
+// deleteButton.addEventListener("click", alert("hola") );
 
 let createAccountButton = document.getElementById("create-account");
 createAccountButton.addEventListener("click", () => {
