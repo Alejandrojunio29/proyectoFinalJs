@@ -75,9 +75,61 @@ if (token) {
   document.getElementById("photo-user").classList.remove("d-none");
   document.getElementById("editButon").classList.remove("d-none");
   document.getElementById("deleteButton").classList.remove("d-none");
-  
 }
 
+//Para editar un post
+const editPost = async (postObject) => {
+  const queryString = window.location.search;
+  console.log("quarystring", queryString);
+  const params = new URLSearchParams(queryString);
+  let savedId = params.get("id");
+  let response = await fetch(`${DB_ENDPOINT}/${savedId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postObject),
+  });
+
+  let data = await response.json();
+  console.log("data", data.data);
+  return data.data;
+};
+
+//PARA ELIMINAR POST
+
+const idPostToDelete = async (id) => {
+  const queryString = window.location.search;
+  console.log("quarystring", queryString);
+  const params = new URLSearchParams(queryString);
+  let savedId = params.get("id");
+
+  return savedId;
+};
+
+const deletePostinDB = async (id) => {
+  const queryString = window.location.search;
+  console.log("quarystring", queryString);
+  const params = new URLSearchParams(queryString);
+  let savedId = params.get("id");
+  const connection = await fetch(`${DB_ENDPOINT}/${savedId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log("Post eliminado:");
+};
+
+let deleteButton = document.getElementById("deleteButton");
+deleteButton.addEventListener("click", () => {
+  deletePostinDB(idPostToDelete);
+});
+
+let deleteButton2 = document.getElementById("deleteButton");
+deleteButton.addEventListener("click", () => {
+  window.open("../index.html", "_self");
+});
 
 let createAccountButton = document.getElementById("create-account");
 createAccountButton.addEventListener("click", () => {
