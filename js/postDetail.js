@@ -73,6 +73,8 @@ if (token) {
   document.getElementById("create-account").classList.add("d-none");
   document.getElementById("create-post").classList.remove("d-none");
   document.getElementById("photo-user").classList.remove("d-none");
+  document.getElementById("editButon").classList.remove("d-none");
+  document.getElementById("deleteButon").classList.remove("d-none");
 }
 
 let createAccountButton = document.getElementById("create-account");
@@ -93,3 +95,5 @@ const getUserToken = () => {
     return legiblePayload.id;
   }
 };
+
+const userPermission = () => {};
