@@ -78,41 +78,6 @@ if (token) {
   
 }
 
-//PARA ELIMINAR POST 
-
-const idPostToDelete = async (id) => {
-  const queryString = window.location.search;
-  console.log("quarystring", queryString);
-  const params = new URLSearchParams(queryString);
-  let savedId = params.get("id");
-  
-return savedId
-  
-};
-
-const deletePostinDB = async (id) => {
-  const queryString = window.location.search;
-  console.log("quarystring", queryString);
-  const params = new URLSearchParams(queryString);
-  let savedId = params.get("id");
-  const connection = await fetch((`${DB_ENDPOINT}/${savedId}`), {
-     method: "DELETE",
-     headers: {
-      'Content-Type': 'application/json',
-    },
-   });
-   console.log("Post eliminado:");
-};
-
-let deleteButton = document.getElementById("deleteButton");
-deleteButton.addEventListener("click", ()=>{
-  deletePostinDB(idPostToDelete)
-} );
-
-let deleteButton2 = document.getElementById("deleteButton");
-deleteButton.addEventListener("click", ()=>{
-  window.open("../index.html", "_self");
-} );
 
 let createAccountButton = document.getElementById("create-account");
 createAccountButton.addEventListener("click", () => {
@@ -122,6 +87,11 @@ createAccountButton.addEventListener("click", () => {
 let redirectToCreatePost = document.getElementById("create-post");
 redirectToCreatePost.addEventListener("click", () => {
   window.open("createPost.html", "_self");
+});
+
+let editButon = document.getElementById("editButon");
+editButon.addEventListener("click", () => {
+  window.open("./createPost.html", "_self");
 });
 
 const getUserToken = () => {
