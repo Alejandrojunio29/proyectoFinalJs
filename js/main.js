@@ -227,6 +227,7 @@ const filterLatest = async () => {
       userName,
       userImg,
       title,
+      _id
     } = dataPosts.data[key];
     result.push({
       postImg,
@@ -240,6 +241,7 @@ const filterLatest = async () => {
       userName,
       userImg,
       title,
+      _id
     });
   }
   return result.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -269,6 +271,7 @@ latestButton.addEventListener("click", async (event) => {
         hashtag4,
         userName,
         userImg,
+        _id
       } = object),
     ];
     console.log("este es post22222", post);
