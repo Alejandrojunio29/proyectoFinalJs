@@ -63,9 +63,14 @@ const createPostinDB = async (postObject) => {
   console.log("data", data.data);
   return data.data;
 
-  console.log("data2:", data2);
-  return JSON.stringify(postObject);
+ // console.log("data2:", data2);
+  //return JSON.stringify(postObject);
 };
+
+
+
+
+
 
 const savePost = async () => {
   let postObject = createPost();
