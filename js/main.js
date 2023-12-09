@@ -30,7 +30,7 @@ const createPostCard = (post) => {
     userName,
     userImg,
     postContent,
-    key,
+    _id,
   } = post;
 
   let mainContainer = document.createElement("div");
@@ -183,7 +183,7 @@ const createPostCard = (post) => {
   mainContainer.append(postimg, secondContainer);
 
   mainContainer.addEventListener("click", () => {
-    window.open(`views/postDetail.html?entryKey=${key}`, "_self");
+    window.open(`views/postDetail.html?id=${_id}`, "_self");
   });
 
   return mainContainer;
